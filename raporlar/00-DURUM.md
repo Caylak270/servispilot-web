@@ -16,6 +16,7 @@
 - [x] Fiyatlandırma — tek paket + 4 dönem seçicisi → 10
 - [x] **Fiyatlandırma — 3 kartlı satış funnel'i** (Aylık 2.399 / **Yıllık 1.599 −%33** / 6 Aylık 1.899 −%21 + 100 QR; sayı fontu Space Grotesk) → 12
 - [x] **Kokpit modern yeniden tasarım** (stoaix/chatflow dili: sidebar kaldırıldı, hap çipler, telefon mockup'ı, toast bildirimleri) → **13**
+- [x] **GitHub push:** github.com/Caylak270/servispilot-web (private, main) + gh CLI kurulumu → **15**
 
 ## Sıradaki
 0. **Chatbot entegrasyonu (ücretsiz)** → öneri ve karşılaştırma **14. raporda** (tawk.to ile başla önerisi)
