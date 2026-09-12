@@ -1,0 +1,15 @@
+# Yapılandırma / sırlar
+.zcode/
+
+# Araştırma dosyaları — Apify token içerir, repoya girmesin
+research/
+
+# İşletim sistemi / düzenleyici artıkları
+Thumbs.db
+Desktop.ini
+.DS_Store
+*.log
+
+# Geçici
+_tmp/
+kokpit-*.html

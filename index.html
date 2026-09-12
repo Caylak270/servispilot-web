@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html class="dark" lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>ServisPilot — Bulut Tabanlı Oto Servis Yönetim Sistemi</title>
+  <meta name="description" content="Ruhsat OCR ile saniyeler içinde iş emri açın, QR kod ile parça stoklarınızı kayıpsız yönetin, WhatsApp onay portalı ve yerleşik GİB E-Fatura ile tahsilatlarınızı hızlandırın.">
+  <link rel="icon" type="image/jpeg" href="assets/logo.jpg">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="ServisPilot — Bulut Tabanlı Oto Servis Yönetim Sistemi">
+  <meta property="og:description" content="Kurulumu ekibimiz yapar — 14 gün ücretsiz deneyin. Ruhsat OCR, QR parça takibi, WhatsApp onay portalı ve yerleşik GİB E-Fatura.">
+  <meta property="og:image" content="assets/logo.jpg">
+  <meta name="twitter:card" content="summary">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+  <style>
+    @layer base {
+      html, body { margin: 0; padding: 0; }
+      body { overscroll-behavior: none; }
+      main > :first-child { margin-top: 0 !important; }
+      main > :last-child { margin-bottom: 0 !important; }
+    }
+    ::-webkit-scrollbar { display: none; }
+    /* Demo motoru animasyonları */
+    @keyframes demoScan { 0% { top: 0; } 100% { top: calc(100% - 2px); } }
+    .qr-scanline { position: absolute; left: 4px; right: 4px; height: 2px; background: #ffc174; box-shadow: 0 0 12px 2px rgba(255,193,116,.8); animation: demoScan 1.1s linear infinite; z-index: 5; }
+    @keyframes stampIn { 0% { transform: scale(1.7) rotate(-14deg); opacity: 0; } 60% { transform: scale(.95) rotate(-8deg); opacity: 1; } 100% { transform: scale(1) rotate(-8deg); opacity: 1; } }
+    .gib-stamp.show { display: block; animation: stampIn .5s cubic-bezier(.2,.8,.3,1) forwards; }
+    @keyframes bubbleIn { from { transform: translateY(8px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+    .wa-row { animation: bubbleIn .3s ease-out both; }
+    .typing-dots span { display: inline-block; width: 5px; height: 5px; margin-right: 3px; border-radius: 9999px; background: rgba(255,255,255,.5); animation: typingBounce 1s infinite; }
+    .typing-dots span:nth-child(2) { animation-delay: .15s; }
+    .typing-dots span:nth-child(3) { animation-delay: .3s; }
+    @keyframes typingBounce { 0%, 60%, 100% { transform: translateY(0); opacity: .5; } 30% { transform: translateY(-4px); opacity: 1; } }
+  </style>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "on-tertiary-fixed-variant": "#5c4300",
+            "surface-bright": "#353942",
+            "on-error-container": "#ffdad6",
+            "secondary-fixed": "#ffdbce",
+            "secondary-container": "#f66018",
+            "tertiary-container": "#e0a800",
+            "on-secondary": "#5a1c00",
+            "secondary-fixed-dim": "#ffb599",
+            "tertiary-fixed": "#ffdf9f",
+            "inverse-primary": "#855300",
+            "text-secondary": "#94A3B8",
+            "primary-fixed": "#ffddb8",
+            "on-surface": "#dfe2ee",
+            "glow-amber": "rgba(245, 158, 11, 0.12)",
+            "tertiary": "#ffc32d",
+            "surface-base": "#0B0F17",
+            "surface-card": "#111827",
+            "surface-container": "#1c2028",
+            "primary-container": "#f59e0b",
+            "text-muted": "#64748B",
+            "surface-card-elevated": "#1E293B",
+            "primary-fixed-dim": "#ffb95f",
+            "on-primary-container": "#613b00",
+            "on-surface-variant": "#d8c3ad",
+            "on-tertiary-container": "#584000",
+            "background": "#0f131c",
+            "on-primary": "#472a00",
+            "surface-container-highest": "#31353e",
+            "surface-container-low": "#181c24",
+            "on-error": "#690005",
+            "on-secondary-fixed": "#370e00",
+            "surface-tint": "#ffb95f",
+            "outline-variant": "#534434",
+            "error-container": "#93000a",
+            "surface-container-lowest": "#0a0e16",
+            "outline": "#a08e7a",
+            "border-amber": "rgba(245, 158, 11, 0.18)",
+            "tertiary-fixed-dim": "#f9bd22",
+            "secondary": "#ffb599",
+            "on-tertiary": "#402d00",
+            "on-tertiary-fixed": "#261a00",
+            "surface-container-high": "#262a33",
+            "on-primary-fixed": "#2a1700",
+            "surface": "#0f131c",
+            "inverse-on-surface": "#2c3039",
+            "on-secondary-container": "#4f1700",
+            "surface-variant": "#31353e",
+            "on-background": "#dfe2ee",
+            "on-primary-fixed-variant": "#653e00",
+            "border-subtle": "rgba(255, 255, 255, 0.08)",
+            "text-primary": "#F8FAFC",
+            "on-secondary-fixed-variant": "#7f2b00",
+            "primary": "#ffc174",
+            "inverse-surface": "#dfe2ee",
+            "error": "#ffb4ab",
+            "surface-dim": "#0f131c"
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          spacing: {
+            "space-md": "1rem",
+            "gutter-mobile": "1rem",
+            "space-xs": "0.25rem",
+            "space-lg": "1.5rem",
+            "space-2xl": "4rem",
+            "margin-mobile": "1.25rem",
+            "space-sm": "0.5rem",
+            "gutter": "1.5rem",
+            "space-xl": "2.5rem",
+            "space-3xl": "6rem",
+            "margin": "3rem"
+          },
+          fontFamily: {
+            "label-md": ["Plus Jakarta Sans"],
+            "headline-sm": ["Plus Jakarta Sans"],
+            "code-metric": ["Space Grotesk", "Plus Jakarta Sans", "sans-serif"],
+            "body-lg": ["Plus Jakarta Sans"],
+            "headline-lg": ["Plus Jakarta Sans"],
+            "label-sm": ["Plus Jakarta Sans"],
+            "body-sm": ["Plus Jakarta Sans"],
+            "body-md": ["Plus Jakarta Sans"],
+            "display": ["Plus Jakarta Sans"],
+            "display-mobile": ["Plus Jakarta Sans"],
+            "headline-lg-mobile": ["Plus Jakarta Sans"],
+            "headline-md": ["Plus Jakarta Sans"]
+          },
+          fontSize: {
+            "label-md": ["0.875rem", { "lineHeight": "1.25rem", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "headline-sm": ["1.25rem", { "lineHeight": "1.75rem", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "code-metric": ["0.875rem", { "lineHeight": "1.25rem", "fontWeight": "500" }],
+            "body-lg": ["1.125rem", { "lineHeight": "1.75rem", "letterSpacing": "-0.01em", "fontWeight": "400" }],
+            "headline-lg": ["2.5rem", { "lineHeight": "3rem", "letterSpacing": "-0.025em", "fontWeight": "700" }],
+            "label-sm": ["0.75rem", { "lineHeight": "1rem", "letterSpacing": "0.04em", "fontWeight": "600" }],
+            "body-sm": ["0.875rem", { "lineHeight": "1.375rem", "fontWeight": "400" }],
+            "body-md": ["1rem", { "lineHeight": "1.5rem", "letterSpacing": "-0.005em", "fontWeight": "400" }],
+            "display": ["3.75rem", { "lineHeight": "4.25rem", "letterSpacing": "-0.03em", "fontWeight": "800" }],
+            "display-mobile": ["2.25rem", { "lineHeight": "2.75rem", "letterSpacing": "-0.025em", "fontWeight": "800" }],
+            "headline-lg-mobile": ["1.875rem", { "lineHeight": "2.375rem", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "headline-md": ["1.75rem", { "lineHeight": "2.25rem", "letterSpacing": "-0.02em", "fontWeight": "600" }]
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="bg-surface-base font-body-md text-on-surface min-h-screen pb-[76px] lg:pb-0 selection:bg-primary-container selection:text-on-primary-container">
+
+  <!-- ================================================================= -->
+  <!-- HEADER                                                            -->
+  <!-- ================================================================= -->
+  <header class="fixed top-0 inset-x-0 z-50 bg-surface-base/90 backdrop-blur-xl border-b border-surface-container-high/40 shadow-2xl">
+    <div class="bg-gradient-to-r from-primary-container/20 via-primary-container to-secondary-container text-surface-base py-1.5 px-4 text-center text-xs font-semibold tracking-wide flex items-center justify-center gap-2">
+      <span class="material-symbols-outlined text-sm text-surface-base animate-pulse">local_fire_department</span>
+      <span class="">İlk 50 Özel Servise Özel Sabit Fiyat Avantajı — 14 Gün Ücretsiz Deneyin!</span>
+      <a class="underline font-bold ml-1 hover:text-white transition-colors" href="#fiyatlandirma">Fırsatı İncele →</a>
+    </div>
+    <div class="h-20 max-w-[1200px] mx-auto px-6 lg:px-12 flex items-center justify-between gap-6">
+      <div class="flex items-center gap-3 shrink-0">
+        <img alt="ServisPilot Logo" class="h-8 w-auto object-contain" src="assets/logo.jpg">
+        <a class="flex items-baseline gap-1 group" data-path="anasayfa" href="#">
+          <span class="font-headline-sm text-headline-sm tracking-tight text-on-surface font-bold group-hover:text-primary transition-colors">Servis<span class="text-primary-container">Pilot</span></span>
+          <span class="hidden sm:inline font-code-metric text-[10px] text-text-muted">.com.tr</span>
+        </a>
+        <div class="hidden md:inline-flex items-center gap-1.5 ml-2 px-2.5 py-0.5 rounded-full bg-primary/10 border border-primary/20 text-primary font-code-metric text-[11px] font-bold">
+          <span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>AI Kokpit v3.4
+        </div>
+      </div>
+      <nav class="hidden xl:flex items-center gap-1 p-1 bg-surface-card/60 backdrop-blur-md rounded-xl border border-surface-container-high/40">
+        <a class="px-3.5 py-2 rounded-lg font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-all" data-path="ozellikler" href="#ozellikler">Özellikler</a>
+        <a class="px-3.5 py-2 rounded-lg font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-all" data-path="canli-deneyim" href="#canli-kokpit">Canlı Kokpit</a>
+        <a class="px-3.5 py-2 rounded-lg font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-all" data-path="nasil-calisir" href="#is-akisi">İş Akışı</a>
+        <a class="px-3.5 py-2 rounded-lg font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-all" data-path="guven" href="#musteri-yorumlari">Referanslar</a>
+        <a class="px-3.5 py-2 rounded-lg font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-all" data-path="fiyatlandirma" href="#fiyatlandirma">Fiyatlandırma</a>
+        <a class="px-3.5 py-2 rounded-lg font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-all" data-path="sikca-sorulanlar" href="#sikca-sorulanlar">SSS</a>
+      </nav>
+      <div class="flex items-center gap-4 shrink-0">
+        <a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors hidden sm:block" data-path="giris-yap" href="#">Giriş Yap</a>
+        <a class="relative group inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-gradient-to-r from-primary-container to-secondary-container text-surface-base font-label-md text-label-md font-bold shadow-[0_4px_20px_-4px_rgba(245,158,11,0.35)] hover:shadow-[0_8px_25px_-4px_rgba(245,158,11,0.55)] hover:brightness-105 transition-all" data-path="kayit-ol" data-track="whatsapp_click" data-location="header" href="https://wa.me/905309929505?text=Merhaba%2C%20ServisPilot%27un%2014%20g%C3%BCnl%C3%BCk%20%C3%BCcretsiz%20denemesini%20ba%C5%9Flatmak%20istiyorum." target="_blank" rel="noopener">
+          <span class="">14 Gün Ücretsiz Başla</span>
+        </a>
+        <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shadow-inner">
+          <span class="material-symbols-outlined text-on-primary text-[18px]">person</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="w-full pt-20 bg-surface-base">
+    <div class="flex flex-col w-full">
+
+      <!-- ================================================================= -->
+      <!-- HERO SECTION                                                      -->
+      <!-- ================================================================= -->
+      <section class="relative w-full pt-28 pb-20 lg:pt-36 lg:pb-28 overflow-hidden">
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-primary-container/10 blur-[140px] rounded-full pointer-events-none"></div>
+        <div class="absolute top-0 right-1/4 w-96 h-96 bg-secondary-container/15 blur-[120px] rounded-full pointer-events-none"></div>
+        <div class="max-w-[1200px] mx-auto px-6 lg:px-12 relative z-10 flex flex-col items-center text-center">
+          <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-surface-card-elevated border border-primary/20 shadow-md mb-8">
+            <span class="relative flex h-2 w-2">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2 w-2 bg-primary-container"></span>
+            </span>
+            <span class="font-label-sm text-label-sm uppercase tracking-wider text-primary font-bold">YENİ NESİL BULUT TABANLI OTO SERVİS YÖNETİMİ</span>
+          </div>
+          <h1 class="font-display text-display-mobile md:text-display text-text-primary tracking-tight max-w-4xl leading-tight mb-6">
+            Oto Servis Yönetiminde
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary via-primary-container to-secondary-container">Kusursuz Düzen</span>
+            &amp; Kusursuz Hız.
+          </h1>
+          <p class="font-body-lg text-body-lg text-text-secondary max-w-2xl mb-10 text-balance leading-relaxed">
+            Ruhsat OCR ile saniyeler içinde iş emri açın, QR kod ile parça stoklarınızı kayıpsız yönetin, WhatsApp onay portalı ve yerleşik GİB E-Fatura ile tahsilatlarınızı ışık hızına çıkarın.
+          </p>
+          <div class="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto mb-5">
+            <a class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-gradient-to-r from-primary-container to-secondary-container text-surface-base font-label-md text-label-md font-bold shadow-[0_6px_28px_-4px_rgba(245,158,11,0.5)] hover:shadow-[0_10px_35px_-4px_rgba(245,158,11,0.7)] hover:brightness-110 transition-all" data-track="whatsapp_click" data-location="hero" href="https://wa.me/905309929505?text=Merhaba%2C%20ServisPilot%27un%2014%20g%C3%BCnl%C3%BCk%20%C3%BCcretsiz%20denemesini%20ba%C5%9Flatmak%20istiyorum." target="_blank" rel="noopener">
+              <span class="">14 Gün Ücretsiz Başla (Kredi Kartsız)</span>
+              <span class="material-symbols-outlined text-lg">arrow_forward</span>
+            </a>
+            <a class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-4 rounded-xl bg-surface-card border border-surface-container-high hover:bg-surface-card-elevated text-text-primary font-label-md text-label-md shadow-md transition-all" href="#canli-kokpit">
+              <span class="material-symbols-outlined text-primary text-xl">play_circle</span>
+              <span class="">Canlı Kokpiti Test Et (60 Sn)</span>
+            </a>
+          </div>
+          <p class="font-code-metric text-xs text-text-muted mb-10">Kredi kartı gerekmez · Kurulumu ücretsiz ekibimiz yapar — WhatsApp'tan yazmanız yeterli.</p>
+          <div class="flex flex-wrap items-center justify-center gap-6 text-text-muted font-label-sm text-label-sm">
+            <div class="flex items-center gap-1.5">
+              <span class="material-symbols-outlined text-primary text-base">check_circle</span>
+              <span class="">Anında Kurulum</span>
+            </div>
+            <span class="text-surface-bright">•</span>
+            <div class="flex items-center gap-1.5">
+              <span class="material-symbols-outlined text-primary text-base">devices</span>
+              <span class="">Bulut PWA (Her Cihaz)</span>
+            </div>
+            <span class="text-surface-bright">•</span>
+            <div class="flex items-center gap-1.5">
+              <span class="material-symbols-outlined text-primary text-base">verified</span>
+              <span class="">GİB &amp; E-Fatura Onaylı</span>
+            </div>
+            <span class="text-surface-bright">•</span>
+            <div class="flex items-center gap-1.5">
+              <span class="material-symbols-outlined text-primary text-base">lock</span>
+              <span class="">Sıfır Veri Kaybı</span>
+            </div>
+          </div>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 w-full max-w-4xl mt-16 pt-10 border-t border-surface-container-high/40">
+            <div class="flex flex-col items-center">
+              <span class="font-code-metric text-2xl font-bold text-text-primary">500+</span>
+              <span class="font-body-sm text-body-sm text-text-muted mt-0.5">Özel &amp; Bağımsız Servis</span>
+            </div>
+            <div class="flex flex-col items-center">
+              <span class="font-code-metric text-2xl font-bold text-primary">₺180M+</span>
+              <span class="font-body-sm text-body-sm text-text-muted mt-0.5">Yönetilen Servis Hacmi</span>
+            </div>
+            <div class="flex flex-col items-center">
+              <span class="font-code-metric text-2xl font-bold text-text-primary">%99.98</span>
+              <span class="font-body-sm text-body-sm text-text-muted mt-0.5">Kesintisiz Bulut Erişim</span>
+            </div>
+            <div class="flex flex-col items-center">
+              <span class="font-code-metric text-2xl font-bold text-primary">5 Sn</span>
+              <span class="font-body-sm text-body-sm text-text-muted mt-0.5">Ruhsat OCR Okuma Hızı</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================= -->
+      <!-- CANLI KOKPIT 2.0 — SENARYO SİMÜLASYONU (modern)                   -->
+      <!-- ================================================================= -->
+      <section class="w-full py-24 bg-surface-container-lowest/40 relative border-t border-b border-surface-container-high/30" id="canli-kokpit">
+        <div class="max-w-[1100px] mx-auto px-6 lg:px-12">
+
+          <!-- Başlık: minimal, ortalanmış -->
+          <div class="text-center max-w-2xl mx-auto mb-10">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary font-label-sm text-label-sm mb-4">
+              <span class="relative flex h-1.5 w-1.5"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span><span class="relative inline-flex rounded-full h-1.5 w-1.5 bg-primary"></span></span>
+              <span class="">Canlı Deneyim Kokpiti</span>
+            </div>
+            <h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-text-primary tracking-tight">Kurulum Yok — İzle, Dene, Karar Ver.</h2>
+            <p class="font-body-md text-body-md text-text-secondary mt-3">Gerçek servis akışı kendiliğinden oynar. Merak edersen dokunup devralırsın.</p>
+          </div>
+
+          <!-- Senaryo seçici: ortalanmış hap düğmeler -->
+          <div class="flex flex-wrap items-center justify-center gap-2 mb-8" id="scenario-chips">
+            <button class="scenario-chip px-4 py-1.5 rounded-full text-[13px] font-semibold transition-all bg-primary-container text-surface-base shadow" data-scenario="auto" onclick="DemoEngine.selectScenario('auto')">▶ Otomatik Tur</button>
+            <button class="scenario-chip px-4 py-1.5 rounded-full text-[13px] font-semibold transition-all bg-surface-card/70 text-text-secondary border border-surface-container-high/60 hover:text-text-primary hover:border-primary/40" data-scenario="kabul" onclick="DemoEngine.selectScenario('kabul')">🚗 Araç Kabul &amp; OCR</button>
+            <button class="scenario-chip px-4 py-1.5 rounded-full text-[13px] font-semibold transition-all bg-surface-card/70 text-text-secondary border border-surface-container-high/60 hover:text-text-primary hover:border-primary/40" data-scenario="usta" onclick="DemoEngine.selectScenario('usta')">👨‍🔧 Usta Kokpiti</button>
+            <button class="scenario-chip px-4 py-1.5 rounded-full text-[13px] font-semibold transition-all bg-surface-card/70 text-text-secondary border border-surface-container-high/60 hover:text-text-primary hover:border-primary/40" data-scenario="stok" onclick="DemoEngine.selectScenario('stok')">📦 QR Stok</button>
+            <button class="scenario-chip px-4 py-1.5 rounded-full text-[13px] font-semibold transition-all bg-surface-card/70 text-text-secondary border border-surface-container-high/60 hover:text-text-primary hover:border-primary/40" data-scenario="fatura" onclick="DemoEngine.selectScenario('fatura')">💬 Onay &amp; Fatura</button>
+            <span class="w-px h-5 bg-surface-container-high/60 mx-1 hidden sm:block"></span>
+            <button id="demo-takeover" class="px-4 py-1.5 rounded-full text-[13px] font-semibold transition-all bg-green-500/10 text-green-400 border border-green-500/30 hover:bg-green-500/20" onclick="DemoEngine.toggleTakeover()">✋ Kendin Dene</button>
+            <button id="demo-replay" class="hidden px-4 py-1.5 rounded-full text-[13px] font-semibold transition-all bg-surface-card/70 text-text-secondary border border-surface-container-high/60 hover:text-text-primary" onclick="DemoEngine.replay()">↻ Yeniden</button>
+          </div>
+
+          <!-- Pencere -->
+          <div class="relative w-full bg-surface-card rounded-2xl shadow-[0_20px_60px_-15px_rgba(0,0,0,0.6)] border border-surface-container-high/50 overflow-hidden">
+
+            <!-- İnce pencere çubuğu: trafik ışıkları + URL + mini ilerleme noktaları -->
+            <div class="h-11 px-4 sm:px-5 bg-surface-container-high/70 flex items-center justify-between gap-4 border-b border-surface-container-high/50">
+              <div class="flex items-center gap-2 min-w-0">
+                <div class="w-2.5 h-2.5 rounded-full bg-red-500/70"></div>
+                <div class="w-2.5 h-2.5 rounded-full bg-yellow-500/70"></div>
+                <div class="w-2.5 h-2.5 rounded-full bg-green-500/70"></div>
+                <span class="ml-3 font-code-metric text-text-muted text-[11px] truncate hidden sm:inline">app.servispilot.com.tr/is-emri/SP-2026</span>
+              </div>
+              <div class="flex items-center gap-3 shrink-0">
+                <div class="flex items-center gap-1.5" id="demo-timeline">
+                  <span data-step="1" class="flex items-center"><span class="tl-dot w-1.5 h-1.5 rounded-full bg-surface-container-highest transition-colors"></span></span>
+                  <span data-step="2" class="flex items-center"><span class="tl-dot w-1.5 h-1.5 rounded-full bg-surface-container-highest transition-colors"></span></span>
+                  <span data-step="3" class="flex items-center"><span class="tl-dot w-1.5 h-1.5 rounded-full bg-surface-container-highest transition-colors"></span></span>
+                  <span data-step="4" class="flex items-center"><span class="tl-dot w-1.5 h-1.5 rounded-full bg-surface-container-highest transition-colors"></span></span>
+                </div>
+                <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-green-500/10 border border-green-500/20 text-green-400 font-code-metric text-[10px] font-bold">
+                  <span class="w-1 h-1 rounded-full bg-green-400 animate-pulse"></span>CANLI
+                </span>
+              </div>
+            </div>
+
+            <!-- Toast (senaryo içi bildirimler) -->
+            <div id="demo-toast" class="absolute top-16 right-4 z-20 px-4 py-2 rounded-xl bg-green-500/10 border border-green-500/30 text-green-400 text-xs font-code-metric font-bold shadow-lg transition-all duration-500 opacity-0 translate-y-1 pointer-events-none">✓</div>
+
+            <!-- Sahne alanı -->
+            <div class="relative">
+              <div id="demo-stage" class="w-full min-h-[520px] p-6 sm:p-10 bg-surface-base/40">
+
+                <!-- Sahne 1: Araç Kabul & OCR — ferah, tek kolon odak -->
+                <div class="tab-panel space-y-8 max-w-3xl mx-auto" id="view-ocr">
+                  <div class="flex flex-col items-center gap-3">
+                    <span class="font-code-metric text-3xl sm:text-4xl font-bold text-text-primary tracking-[0.2em] bg-surface-container-high/70 px-6 py-2.5 rounded-xl border border-surface-container/60 min-w-[220px] text-center" id="plate-display">&nbsp;</span>
+                    <span class="px-2.5 py-1 rounded-full bg-surface-container/70 border border-surface-container-high/60 text-text-muted font-label-sm text-xs flex items-center gap-1.5" id="ocr-status-badge">Kamerayı bekliyor…</span>
+                  </div>
+                  <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                    <div class="p-4 rounded-xl bg-surface-card border border-surface-container-high/40 space-y-1.5">
+                      <span class="text-[11px] text-text-muted font-medium">Şasi No</span>
+                      <div class="font-code-metric text-sm text-text-primary font-bold min-h-[20px]" id="sim-chassis">&nbsp;</div>
+                      <div class="text-[11px] text-green-400 flex items-center gap-1 opacity-0 transition-opacity" id="sim-chassis-ok"><span class="material-symbols-outlined text-xs">verified</span> Otomatik çözümlendi</div>
+                    </div>
+                    <div class="p-4 rounded-xl bg-surface-card border border-surface-container-high/40 space-y-1.5">
+                      <span class="text-[11px] text-text-muted font-medium">Marka / Model</span>
+                      <div class="font-label-md text-sm text-text-primary font-semibold min-h-[20px]" id="sim-model">&nbsp;</div>
+                      <div class="text-[11px] text-text-muted font-code-metric" id="sim-yakit">&nbsp;</div>
+                    </div>
+                    <div class="p-4 rounded-xl bg-surface-card border border-surface-container-high/40 space-y-1.5">
+                      <span class="text-[11px] text-text-muted font-medium">Müşteri</span>
+                      <div class="font-label-md text-sm text-text-primary font-semibold min-h-[20px]" id="sim-customer">&nbsp;</div>
+                      <div class="text-[11px] text-primary font-code-metric">+90 (532) *** ** 90</div>
+                    </div>
+                  </div>
+                  <div class="rounded-xl bg-surface-card border border-surface-container-high/40 p-4 space-y-3">
+                    <div class="flex items-center justify-between px-1">
+                      <span class="font-label-sm text-label-sm text-text-secondary flex items-center gap-1.5"><span class="material-symbols-outlined text-primary text-base">photo_camera</span>4 Açı Hasar Kontrolü</span>
+                      <span class="text-[11px] text-green-400 font-code-metric flex items-center gap-1"><span class="material-symbols-outlined text-xs">cloud_done</span>Bulut kayıtlı</span>
+                    </div>
+                    <div class="grid grid-cols-4 gap-2.5" id="hasar-grid">
+                      <div data-tile="1" class="h-16 rounded-lg bg-surface-container-high/70 flex flex-col items-center justify-center text-text-muted transition-all duration-500 opacity-40 border border-surface-container/50">
+                        <span class="material-symbols-outlined text-base text-primary">front_loader</span>
+                        <span class="text-[9px] mt-0.5 font-medium">Ön Tampon</span>
+                      </div>
+                      <div data-tile="2" class="h-16 rounded-lg bg-surface-container-high/70 flex flex-col items-center justify-center text-text-muted transition-all duration-500 opacity-40 border border-surface-container/50">
+                        <span class="material-symbols-outlined text-base text-secondary-container">car_repair</span>
+                        <span class="text-[9px] mt-0.5 font-medium">Sağ Çamurluk</span>
+                      </div>
+                      <div data-tile="3" class="h-16 rounded-lg bg-surface-container-high/70 flex flex-col items-center justify-center text-text-muted transition-all duration-500 opacity-40 border border-surface-container/50">
+                        <span class="material-symbols-outlined text-base text-primary">tire_repair</span>
+                        <span class="text-[9px] mt-0.5 font-medium">Sol Lastik</span>
+                      </div>
+                      <div data-tile="4" class="h-16 rounded-lg bg-surface-container-high/70 flex flex-col items-center justify-center text-text-muted transition-all duration-500 opacity-40 border border-surface-container/50">
+                        <span class="material-symbols-outlined text-base text-primary">add_circle</span>
+                        <span class="text-[9px] mt-0.5 font-medium">Foto Ekle</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="flex flex-wrap items-center justify-center gap-2.5">
+                    <button class="px-4 py-2 rounded-full bg-primary-container text-surface-base text-[13px] font-semibold hover:brightness-110 transition-all flex items-center gap-1.5 shadow" onclick="triggerSimAction('ocr')">
+                      <span class="material-symbols-outlined text-sm">bolt</span> Ruhsatı Yeniden Tara
+                    </button>
+                    <button class="px-4 py-2 rounded-full bg-surface-card border border-surface-container-high/60 text-text-primary text-[13px] font-semibold transition-all flex items-center gap-1.5" onclick="triggerSimAction('changePlate')">
+                      <span class="material-symbols-outlined text-sm">autorenew</span> Farklı Araç
+                    </button>
+                    <button class="px-4 py-2 rounded-full bg-green-500/10 text-green-400 border border-green-500/30 text-[13px] font-semibold transition-all flex items-center gap-1.5" onclick="DemoEngine.showScreen('fatura')">
+                      <span class="material-symbols-outlined text-sm">chat</span> WhatsApp Bildirimi
+                    </button>
+                    <span class="text-xs font-code-metric text-primary transition-opacity duration-300 opacity-0" id="sim-feedback-msg">İşlem uygulandı ✓</span>
+                  </div>
+                </div>
+
+                <!-- Sahne 2: Usta Kokpiti -->
+                <div class="tab-panel hidden space-y-6 max-w-3xl mx-auto" id="view-usta">
+                  <div class="flex items-center justify-between rounded-xl bg-surface-card border border-surface-container-high/40 px-5 py-3.5">
+                    <div class="flex items-center gap-3">
+                      <div class="w-9 h-9 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold text-sm">MŞ</div>
+                      <div>
+                        <div class="font-label-md text-label-md text-text-primary font-bold">Mehmet Şahin · Lift-2</div>
+                        <div class="text-xs text-text-muted">34 SP 911 · Periyodik Bakım &amp; Fren</div>
+                      </div>
+                    </div>
+                    <span class="px-3 py-1 rounded-full bg-primary-container/20 text-primary font-code-metric text-xs font-semibold" id="usta-timer">00:00:00</span>
+                  </div>
+                  <div class="grid grid-cols-2 gap-3">
+                    <button data-usta-btn="1" class="p-5 sm:p-7 rounded-2xl bg-surface-card border border-surface-container-high/40 hover:border-primary/50 hover:bg-surface-card-elevated transition-all flex flex-col items-center justify-center text-center group" onclick="logMechanicAction('BAŞLAT / DURAKLAT')">
+                      <span class="material-symbols-outlined text-3xl sm:text-4xl text-primary mb-2 group-hover:scale-110 transition-transform">play_pause</span>
+                      <span class="font-label-md text-label-md text-text-primary font-bold">Başlat / Duraklat</span>
+                      <span class="text-xs text-text-muted mt-1">Süre sayacı çalışır</span>
+                    </button>
+                    <button data-usta-btn="2" class="p-5 sm:p-7 rounded-2xl bg-surface-card border border-surface-container-high/40 hover:border-secondary-container/50 hover:bg-surface-card-elevated transition-all flex flex-col items-center justify-center text-center group" onclick="logMechanicAction('PARÇA TALEBİ')">
+                      <span class="material-symbols-outlined text-3xl sm:text-4xl text-secondary-container mb-2 group-hover:scale-110 transition-transform">inventory_2</span>
+                      <span class="font-label-md text-label-md text-text-primary font-bold">QR Parça Ekle</span>
+                      <span class="text-xs text-text-muted mt-1">Barkodu okut</span>
+                    </button>
+                    <button data-usta-btn="3" class="p-5 sm:p-7 rounded-2xl bg-surface-card border border-surface-container-high/40 hover:border-primary/50 hover:bg-surface-card-elevated transition-all flex flex-col items-center justify-center text-center group" onclick="logMechanicAction('FOTOĞRAF ÇEK')">
+                      <span class="material-symbols-outlined text-3xl sm:text-4xl text-primary mb-2 group-hover:scale-110 transition-transform">add_a_photo</span>
+                      <span class="font-label-md text-label-md text-text-primary font-bold">İşi Fotoğrafla</span>
+                      <span class="text-xs text-text-muted mt-1">Öncesi / sonrası</span>
+                    </button>
+                    <button data-usta-btn="4" class="p-5 sm:p-7 rounded-2xl bg-surface-card border border-surface-container-high/40 hover:border-green-500/50 hover:bg-surface-card-elevated transition-all flex flex-col items-center justify-center text-center group" onclick="logMechanicAction('TESTE GÖNDER')">
+                      <span class="material-symbols-outlined text-3xl sm:text-4xl text-green-400 mb-2 group-hover:scale-110 transition-transform">task_alt</span>
+                      <span class="font-label-md text-label-md text-text-primary font-bold">Bitir &amp; Teste Gönder</span>
+                      <span class="text-xs text-text-muted mt-1">Şefe otomatik bildirim</span>
+                    </button>
+                  </div>
+                  <div class="rounded-xl bg-surface-card-elevated/70 border border-surface-container-high/40 px-4 py-3 font-code-metric text-xs text-primary flex items-center gap-2" id="usta-log">
+                    <span class="material-symbols-outlined text-sm">notifications_active</span>
+                    <span id="usta-log-text">Usta durumu aktif: Lift-2 çalışıyor.</span>
+                  </div>
+                </div>
+
+                <!-- Sahne 3: QR Stok -->
+                <div class="tab-panel hidden max-w-3xl mx-auto" id="view-stok">
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div class="rounded-xl bg-surface-card border border-surface-container-high/40 p-5 space-y-4">
+                      <div class="flex items-center justify-between">
+                        <span class="font-label-md text-label-md text-text-primary font-semibold">Raf A-12 · Barkod</span>
+                        <span class="px-2 py-0.5 rounded bg-primary/10 text-primary font-code-metric text-xs font-bold">SP-PRC-88219</span>
+                      </div>
+                      <div class="flex items-center gap-4 p-3.5 rounded-xl bg-surface-container-high/70 border border-surface-container/50">
+                        <div class="relative w-14 h-14 bg-surface-base rounded-lg flex items-center justify-center overflow-hidden shrink-0" id="qr-kutu">
+                          <span class="material-symbols-outlined text-3xl text-primary">qr_code_2</span>
+                          <div class="qr-scanline hidden" id="qr-scanline"></div>
+                        </div>
+                        <div class="min-w-0">
+                          <div class="font-label-md text-sm text-text-primary font-semibold">Ön Fren Balata Takımı</div>
+                          <div class="text-xs text-text-muted">Seramik · OEM onaylı</div>
+                          <div class="text-xs text-green-400 font-semibold mt-1" id="stok-adet">Kalan Stok: 18 Adet</div>
+                        </div>
+                      </div>
+                      <button class="w-full py-2.5 rounded-full bg-primary-container text-surface-base text-[13px] font-semibold hover:brightness-110 transition-all flex items-center justify-center gap-1.5 shadow" onclick="simulateStockDeduction()">
+                        <span class="material-symbols-outlined text-sm">qr_code_scanner</span> İş Emrine 1 Adet Düş
+                      </button>
+                    </div>
+                    <div class="rounded-xl bg-surface-card border border-surface-container-high/40 p-5 flex flex-col justify-between">
+                      <div>
+                        <div class="flex items-center justify-between mb-3">
+                          <span class="font-label-md text-label-md text-text-primary font-semibold">Takılan Parçalar</span>
+                          <span class="text-xs font-code-metric text-text-muted" id="parca-sayi">0 Kalem</span>
+                        </div>
+                        <div class="space-y-2 text-xs font-code-metric min-h-[110px]" id="parca-listesi"></div>
+                      </div>
+                      <div class="pt-3 mt-3 border-t border-surface-container-high/50 flex justify-between items-center">
+                        <span class="text-xs text-text-muted font-code-metric">Ara Toplam</span>
+                        <span class="font-code-metric text-base font-bold text-text-primary" id="parca-toplam">0 ₺</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Sahne 4: WhatsApp + GİB — telefon mockup + fatura -->
+                <div class="tab-panel hidden max-w-3xl mx-auto" id="view-fatura">
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 items-stretch">
+                    <!-- Telefon mockup -->
+                    <div class="rounded-[1.75rem] border border-surface-container-high/70 bg-[#0B141A] overflow-hidden shadow-xl flex flex-col">
+                      <div class="px-4 py-2.5 bg-[#1F2C34] flex items-center gap-2.5">
+                        <div class="w-7 h-7 rounded-full bg-[#2A3942] flex items-center justify-center text-[10px] font-bold text-white">BK</div>
+                        <div class="min-w-0">
+                          <div class="text-[12px] text-white font-semibold leading-tight">Burak Karadağ</div>
+                          <div class="text-[9px] text-white/50">çevrimiçi</div>
+                        </div>
+                        <span class="ml-auto material-symbols-outlined text-white/40 text-base">more_vert</span>
+                      </div>
+                      <div class="flex-1 p-3 space-y-2 min-h-[260px] max-h-[300px] overflow-y-auto" id="wa-chat"></div>
+                      <div class="px-3 py-2 bg-[#1F2C34] flex items-center gap-2">
+                        <span class="material-symbols-outlined text-white/40 text-base">sentiment_satisfied</span>
+                        <span class="flex-1 text-[10px] text-white/40">Mesaj yazın…</span>
+                        <span class="material-symbols-outlined text-white/40 text-base">mic</span>
+                      </div>
+                    </div>
+                    <!-- Fatura kartı -->
+                    <div class="rounded-2xl bg-surface-card border border-surface-container-high/40 p-5 space-y-4 relative flex flex-col">
+                      <div class="gib-stamp hidden absolute top-4 right-4 z-10 px-3 py-1.5 border-2 border-green-400 text-green-400 rounded-lg font-code-metric text-xs font-bold tracking-widest bg-green-400/10" id="gib-stamp">GİB ONAYLADI ✓</div>
+                      <div class="flex items-center justify-between">
+                        <span class="font-label-md text-label-md text-text-primary font-semibold flex items-center gap-1.5"><span class="material-symbols-outlined text-primary text-base">receipt_long</span>E-Arşiv Fatura</span>
+                        <span class="px-2 py-0.5 rounded-full bg-green-500/10 text-green-400 font-label-sm text-[10px] font-bold" id="wa-status">Bekliyor…</span>
+                      </div>
+                      <div class="rounded-xl bg-surface-container-high/60 border border-surface-container/50 p-4 space-y-2.5 text-xs font-code-metric">
+                        <div class="flex justify-between"><span class="text-text-muted">Fatura Tipi</span><span class="text-text-primary font-medium">E-Arşiv · Bireysel</span></div>
+                        <div class="flex justify-between"><span class="text-text-muted">Parça + İşçilik</span><span class="text-text-primary font-medium">6.440,00 ₺</span></div>
+                        <div class="flex justify-between"><span class="text-text-muted">KDV Dahil Toplam</span><span class="text-primary font-bold text-sm">7.488,00 ₺</span></div>
+                        <div class="flex justify-between pt-2 border-t border-surface-container/50"><span class="text-text-muted">GİB Durumu</span><span class="text-text-muted font-bold" id="gib-durum">Gönderilmedi</span></div>
+                      </div>
+                      <div class="mt-auto space-y-2">
+                        <button class="w-full py-2.5 rounded-full bg-green-600 hover:bg-green-500 text-white text-[13px] font-semibold transition-all flex items-center justify-center gap-1.5 shadow" id="wa-btn" onclick="sendSimWhatsApp()">
+                          <span class="material-symbols-outlined text-sm">send</span> WhatsApp ile Gönder
+                        </button>
+                        <button class="w-full py-2.5 rounded-full bg-gradient-to-r from-primary-container to-secondary-container text-surface-base text-[13px] font-semibold hover:brightness-110 transition-all flex items-center justify-center gap-1.5 shadow" id="gib-btn" onclick="issueSimInvoice()">
+                          <span class="material-symbols-outlined text-sm">electric_bolt</span> Tek Tıkla GİB Fatura Kes
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- Senaryo sonu funnel şeridi -->
+              <div id="demo-cta" class="hidden border-t border-surface-container-high/50 bg-surface-card/60 backdrop-blur px-6 sm:px-10 py-5 flex-col sm:flex-row items-center justify-between gap-3">
+                <div class="flex items-center gap-2 text-sm text-text-primary font-label-md text-label-md">
+                  <span class="material-symbols-outlined text-primary text-lg">auto_awesome</span>
+                  <span class="">Aynı akış kendi atölyende — kurulumu biz yapıyoruz.</span>
+                </div>
+                <div class="flex gap-2">
+                  <a class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-green-600 hover:bg-green-500 text-white text-[13px] font-semibold transition-all shadow" href="https://wa.me/905309929505?text=Merhaba%2C%20kokpiti%20denedim%3B%20kendi%20at%C3%B6lyem%20i%C3%A7in%20kurulum%20g%C3%B6r%C3%BC%C5%9Fmek%20istiyorum." target="_blank" rel="noopener" data-track="whatsapp_click" data-location="kokpit-cta">
+                    <span class="material-symbols-outlined text-base">chat</span>
+                    WhatsApp'tan Başla
+                  </a>
+                  <button class="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-surface-card-elevated hover:bg-surface-bright border border-surface-container-high text-text-primary text-[13px] font-semibold transition-all" onclick="openCalendarModal('kokpit-cta')" data-track="calendar_open" data-location="kokpit-cta">
+                    <span class="material-symbols-outlined text-base text-primary">calendar_month</span>
+                    Görüşme Planla
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- İnce alt bilgi -->
+            <div class="px-6 sm:px-10 py-3 border-t border-surface-container-high/40 flex items-center justify-between text-[11px] text-text-muted font-code-metric">
+              <span class="">Sandbox · örnek verilerle oynar</span>
+              <a class="hover:text-text-primary transition-colors" href="#fiyatlandirma">Paketleri İncele →</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================= -->
+      <!-- 6 CORE PILLARS                                                    -->
+      <!-- ================================================================= -->
+      <section class="w-full py-24 relative" id="ozellikler">
+        <div class="max-w-[1200px] mx-auto px-6 lg:px-12">
+          <div class="text-center max-w-2xl mx-auto mb-16">
+            <span class="font-label-sm text-label-sm uppercase tracking-wider text-primary font-bold">NEDEN SERVİSPİLOT?</span>
+            <h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-text-primary mt-2">Atölyenizi Hızlandıran 6 Ana Güç</h2>
+            <p class="font-body-md text-body-md text-text-secondary mt-3">Gereksiz detaylar, karmaşık menüler ve kafa karıştıran ekranlar yok. Her saniyesi kazanç sağlayan sade ve prestijli mimari.</p>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="p-7 rounded-2xl bg-surface-card border border-surface-container-high/50 hover:border-primary/40 hover:bg-surface-card-elevated shadow-lg transition-all flex flex-col justify-between group">
+              <div>
+                <div class="w-12 h-12 rounded-xl bg-primary-container/10 flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform">
+                  <span class="material-symbols-outlined text-2xl">document_scanner</span>
+                </div>
+                <h3 class="font-headline-sm text-headline-sm text-text-primary mb-3">Tesseract AI Ruhsat OCR</h3>
+                <p class="font-body-md text-body-md text-text-secondary leading-relaxed">Telefon kamerasıyla ruhsatı çekin; şasi no, motor no, marka ve müşteri bilgileri 5 saniyede otomatik dolsun. Klavye hatası sıfıra iner.</p>
+              </div>
+              <div class="mt-8 pt-4 border-t border-surface-container-high/40 flex items-center justify-between text-xs font-code-metric text-text-muted">
+                <span class="">Doğruluk: %99.8</span>
+                <span class="text-primary font-bold">5 Saniyede Kabul</span>
+              </div>
+            </div>
+            <div class="p-7 rounded-2xl bg-surface-card border border-surface-container-high/50 hover:border-secondary-container/40 hover:bg-surface-card-elevated shadow-lg transition-all flex flex-col justify-between group">
+              <div>
+                <div class="w-12 h-12 rounded-xl bg-secondary-container/10 flex items-center justify-center text-secondary-container mb-6 group-hover:scale-110 transition-transform">
+                  <span class="material-symbols-outlined text-2xl">touch_app</span>
+                </div>
+                <h3 class="font-headline-sm text-headline-sm text-text-primary mb-3">Tek Dokunuş Usta Kokpiti</h3>
+                <p class="font-body-md text-body-md text-text-secondary leading-relaxed">Bilgisayardan çekinen ustalar için dev 4 butonlu dokunmatik ekran. Lift başındayken tek tıkla parça ister, işe başlar veya bitirir.</p>
+              </div>
+              <div class="mt-8 pt-4 border-t border-surface-container-high/40 flex items-center justify-between text-xs font-code-metric text-text-muted">
+                <span class="">Eğitim: 3 Dakika</span>
+                <span class="text-primary font-bold">Sıfır Karmaşa</span>
+              </div>
+            </div>
+            <div class="p-7 rounded-2xl bg-surface-card border border-surface-container-high/50 hover:border-primary/40 hover:bg-surface-card-elevated shadow-lg transition-all flex flex-col justify-between group">
+              <div>
+                <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform">
+                  <span class="material-symbols-outlined text-2xl">photo_camera</span>
+                </div>
+                <h3 class="font-headline-sm text-headline-sm text-text-primary mb-3">4 Açı Görsel Kanıt &amp; Arşiv</h3>
+                <p class="font-body-md text-body-md text-text-secondary leading-relaxed">Kabulde çekilen fotoğraflar ve usta işlem öncesi/sonrası kareleri buluta kilitlenir. "Bu çizik serviste oldu" itirazları tamamen son bulur.</p>
+              </div>
+              <div class="mt-8 pt-4 border-t border-surface-container-high/40 flex items-center justify-between text-xs font-code-metric text-text-muted">
+                <span class="">Bulut Depolama</span>
+                <span class="text-primary font-bold">İtirazlara Son</span>
+              </div>
+            </div>
+            <div class="p-7 rounded-2xl bg-surface-card border border-surface-container-high/50 hover:border-primary/40 hover:bg-surface-card-elevated shadow-lg transition-all flex flex-col justify-between group">
+              <div>
+                <div class="w-12 h-12 rounded-xl bg-primary-container/10 flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform">
+                  <span class="material-symbols-outlined text-2xl">qr_code_scanner</span>
+                </div>
+                <h3 class="font-headline-sm text-headline-sm text-text-primary mb-3">QR Fiziksel Parça &amp; Raf</h3>
+                <p class="font-body-md text-body-md text-text-secondary leading-relaxed">Raftaki parçayı telefonla okutun. Hangi usta, hangi tarihte, hangi araca taktı anında kayda geçsin. Kayıp ambar açığına son verin.</p>
+              </div>
+              <div class="mt-8 pt-4 border-t border-surface-container-high/40 flex items-center justify-between text-xs font-code-metric text-text-muted">
+                <span class="">İlk 400 QR Hediye</span>
+                <span class="text-primary font-bold">Kayıpsız Ambar</span>
+              </div>
+            </div>
+            <div class="p-7 rounded-2xl bg-surface-card border border-surface-container-high/50 hover:border-green-500/40 hover:bg-surface-card-elevated shadow-lg transition-all flex flex-col justify-between group">
+              <div>
+                <div class="w-12 h-12 rounded-xl bg-green-500/10 flex items-center justify-center text-green-400 mb-6 group-hover:scale-110 transition-transform">
+                  <span class="material-symbols-outlined text-2xl">chat</span>
+                </div>
+                <h3 class="font-headline-sm text-headline-sm text-text-primary mb-3">Müşteri WhatsApp Portalı</h3>
+                <p class="font-body-md text-body-md text-text-secondary leading-relaxed">Müşterinize fotoğraflı onay linki iletin. Onaylanan kalemler tek tıkla resmi GİB E-Fatura veya E-Arşiv olarak kesilsin. Tahsilat hızlanır.</p>
+              </div>
+              <div class="mt-8 pt-4 border-t border-surface-container-high/40 flex items-center justify-between text-xs font-code-metric text-text-muted">
+                <span class="">Şeffaf Ekstre</span>
+                <span class="text-primary font-bold">Işık Hızı Onay</span>
+              </div>
+            </div>
+            <div class="p-7 rounded-2xl bg-surface-card border border-surface-container-high/50 hover:border-primary/40 hover:bg-surface-card-elevated shadow-lg transition-all flex flex-col justify-between group">
+              <div>
+                <div class="w-12 h-12 rounded-xl bg-primary-container/20 flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform">
+                  <span class="material-symbols-outlined text-2xl">receipt_long</span>
+                </div>
+                <h3 class="font-headline-sm text-headline-sm text-text-primary mb-3">Yerleşik GİB E-Fatura</h3>
+                <p class="font-body-md text-body-md text-text-secondary leading-relaxed">Ayrı pahalı entegratör yazılımlarına gerek kalmadan doğrudan Gelir İdaresi Başkanlığı sistemine resmi E-Arşiv / E-Fatura gönderin.</p>
+              </div>
+              <div class="mt-8 pt-4 border-t border-surface-container-high/40 flex items-center justify-between text-xs font-code-metric text-text-muted">
+                <span class="">Mali Mühür Uyumlu</span>
+                <span class="text-primary font-bold">0 TL Aracı Ücreti</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================= -->
+      <!-- 60 SANİYEDE KABULDEN FATURAYA (Flow Timeline)                     -->
+      <!-- ================================================================= -->
+      <section class="w-full py-20 bg-surface-container-lowest/40 border-t border-b border-surface-container-high/30" id="is-akisi">
+        <div class="max-w-[1200px] mx-auto px-6 lg:px-12">
+          <div class="text-center max-w-xl mx-auto mb-16">
+            <span class="font-code-metric text-xs uppercase tracking-widest text-primary font-bold">AKICI İŞ AKIŞI</span>
+            <h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-text-primary mt-2">60 Saniyede Kabulden Faturaya</h2>
+            <p class="font-body-md text-body-md text-text-secondary mt-2">Adım adım sadeleştirilmiş, otomotiv profesyonelleri için tasarlanmış lineer süreç.</p>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-5 gap-4 relative">
+            <div class="p-5 rounded-xl bg-surface-card border border-surface-container-high/50 flex flex-col justify-between space-y-4 hover:border-primary/40 transition-all">
+              <div class="flex items-center justify-between">
+                <span class="font-code-metric text-xs font-bold text-primary">01 (00:10 sn)</span>
+                <span class="material-symbols-outlined text-primary text-xl">photo_camera</span>
+              </div>
+              <div>
+                <h4 class="font-label-md text-label-md text-text-primary font-bold mb-1">Araç Kabulü &amp; 4 Açı</h4>
+                <p class="font-body-sm text-body-sm text-text-muted">Dış hasar ve kilometre görselleri anında kaydedilir.</p>
+              </div>
+            </div>
+            <div class="p-5 rounded-xl bg-surface-card border border-surface-container-high/50 flex flex-col justify-between space-y-4 hover:border-primary/40 transition-all">
+              <div class="flex items-center justify-between">
+                <span class="font-code-metric text-xs font-bold text-primary">02 (00:25 sn)</span>
+                <span class="material-symbols-outlined text-primary text-xl">document_scanner</span>
+              </div>
+              <div>
+                <h4 class="font-label-md text-label-md text-text-primary font-bold mb-1">Ruhsat OCR</h4>
+                <p class="font-body-sm text-body-sm text-text-muted">Kamerayla okunan ruhsat tüm iş emrini saniyede doldurur.</p>
+              </div>
+            </div>
+            <div class="p-5 rounded-xl bg-surface-card border border-surface-container-high/50 flex flex-col justify-between space-y-4 hover:border-primary/40 transition-all">
+              <div class="flex items-center justify-between">
+                <span class="font-code-metric text-xs font-bold text-primary">03 (00:40 sn)</span>
+                <span class="material-symbols-outlined text-primary text-xl">build</span>
+              </div>
+              <div>
+                <h4 class="font-label-md text-label-md text-text-primary font-bold mb-1">Usta &amp; QR Parça</h4>
+                <p class="font-body-sm text-body-sm text-text-muted">Karekodlu parça eşlenir, işçilik süresi otomatik tutulur.</p>
+              </div>
+            </div>
+            <div class="p-5 rounded-xl bg-surface-card border border-surface-container-high/50 flex flex-col justify-between space-y-4 hover:border-primary/40 transition-all">
+              <div class="flex items-center justify-between">
+                <span class="font-code-metric text-xs font-bold text-primary">04 (00:50 sn)</span>
+                <span class="material-symbols-outlined text-primary text-xl">chat</span>
+              </div>
+              <div>
+                <h4 class="font-label-md text-label-md text-text-primary font-bold mb-1">WhatsApp Onay</h4>
+                <p class="font-body-sm text-body-sm text-text-muted">Müşteri telefonuna giden fotoğraflı link ile anında onay alınır.</p>
+              </div>
+            </div>
+            <div class="p-5 rounded-xl bg-surface-card border border-surface-container-high/50 flex flex-col justify-between space-y-4 hover:border-secondary-container/50 transition-all">
+              <div class="flex items-center justify-between">
+                <span class="font-code-metric text-xs font-bold text-secondary-container">05 (01:00 sn)</span>
+                <span class="material-symbols-outlined text-secondary-container text-xl">receipt</span>
+              </div>
+              <div>
+                <h4 class="font-label-md text-label-md text-text-primary font-bold mb-1">Tek Tık GİB Fatura</h4>
+                <p class="font-body-sm text-body-sm text-text-muted">Tek tuşla e-Fatura kesilir, tahsilat cariye işlenir.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================= -->
+      <!-- MÜŞTERİ YORUMLARI & GÜVEN                                         -->
+      <!-- ================================================================= -->
+      <section class="w-full py-24 relative" id="musteri-yorumlari">
+        <div class="max-w-[1200px] mx-auto px-6 lg:px-12">
+          <div class="text-center max-w-2xl mx-auto mb-16">
+            <span class="font-label-sm text-label-sm uppercase tracking-wider text-primary font-bold">MÜŞTERİ DENEYİMİ</span>
+            <h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-text-primary mt-2">Seçkin &amp; Bağımsız Servislerin Ortak Tercihi</h2>
+            <p class="font-body-md text-body-md text-text-secondary mt-3">Türkiye genelinde yüzlerce özel servis ve bağımsız otomotiv atölyesi ServisPilot ile çalışıyor.</p>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="p-8 rounded-2xl bg-surface-card border border-surface-container-high/50 hover:border-primary/40 shadow-xl space-y-6">
+              <div class="flex items-center gap-1 text-primary">
+                <span class="material-symbols-outlined text-base">star</span>
+                <span class="material-symbols-outlined text-base">star</span>
+                <span class="material-symbols-outlined text-base">star</span>
+                <span class="material-symbols-outlined text-base">star</span>
+                <span class="material-symbols-outlined text-base">star</span>
+              </div>
+              <p class="font-body-lg text-body-lg text-text-primary italic leading-relaxed">"Ay sonunda kaybolan parçaları ve WhatsApp'ta kaybolan faturaları tamamen bitirdik. Usta kokpiti o kadar sade ki, elemanlar hiç zorlanmadan adapte oldu. Ciddi bir nakit disiplini sağladı."</p>
+              <div class="flex items-center gap-4 pt-4 border-t border-surface-container-high/40">
+                <div class="w-11 h-11 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold text-sm">MK</div>
+                <div>
+                  <div class="font-label-md text-label-md text-text-primary font-bold">M. Kaya</div>
+                  <div class="text-xs text-text-muted">Özel Servis İşletmecisi (Maslak Sanayi)</div>
+                </div>
+              </div>
+            </div>
+            <div class="p-8 rounded-2xl bg-surface-card border border-surface-container-high/50 hover:border-primary/40 shadow-xl space-y-6">
+              <div class="flex items-center gap-1 text-primary">
+                <span class="material-symbols-outlined text-base">star</span>
+                <span class="material-symbols-outlined text-base">star</span>
+                <span class="material-symbols-outlined text-base">star</span>
+                <span class="material-symbols-outlined text-base">star</span>
+                <span class="material-symbols-outlined text-base">star</span>
+              </div>
+              <p class="font-body-lg text-body-lg text-text-primary italic leading-relaxed">"Bilgisayardan çekinen ustalarım ertesi gün kullanmaya başladı. Müşterilerimize WhatsApp'tan giden Öncesi/Sonrası fotoğrafları ve şeffaf ekstre servisimizin itibarını katladı."</p>
+              <div class="flex items-center gap-4 pt-4 border-t border-surface-container-high/40">
+                <div class="w-11 h-11 rounded-full bg-secondary-container/20 flex items-center justify-center text-secondary-container font-bold text-sm">SD</div>
+                <div>
+                  <div class="font-label-md text-label-md text-text-primary font-bold">S. Demir</div>
+                  <div class="text-xs text-text-muted">Otomotiv Servis Müdürü (Bostancı Sanayi)</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mt-14 p-6 rounded-2xl bg-surface-card-elevated/50 border border-surface-container-high/40 flex flex-wrap items-center justify-around gap-6 text-xs text-text-muted font-label-sm">
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-primary text-lg">cloud_done</span>
+              <span class="text-text-primary font-semibold">ISO 27001 Bulut Güvenliği</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-primary text-lg">lock</span>
+              <span class="text-text-primary font-semibold">256-Bit SSL Şifreleme</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-primary text-lg">verified_user</span>
+              <span class="text-text-primary font-semibold">KVKK %100 Uyumlu</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-primary text-lg">dns</span>
+              <span class="text-text-primary font-semibold">Türkiye Merkezli Güvenli Sunucular</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================= -->
+      <!-- FİYATLANDIRMA                                                     -->
+      <!-- ================================================================= -->
+      <section class="w-full py-24 relative overflow-hidden bg-surface-container-lowest/40 border-t border-surface-container-high/40" id="fiyatlandirma">
+        <div class="max-w-[1200px] mx-auto px-6 lg:px-12 relative z-10">
+          <div class="text-center max-w-3xl mx-auto mb-14">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary font-label-sm text-label-sm mb-4 shadow-sm">
+              <span class="material-symbols-outlined text-sm animate-pulse">local_offer</span>
+              <span class="">ŞEFFAF FİYATLANDIRMA &amp; PAKETLER</span>
+            </div>
+            <h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-text-primary tracking-tight">Süresi Uzadıkça Avantajı Büyüyen Paketler</h2>
+            <p class="font-body-lg text-body-lg text-text-secondary mt-3 leading-relaxed">Gizli masraf yok. Uzun dönem seçiminde <strong class="text-text-primary">%33 indirim + 200 QR etiket hediye</strong> — 14 gün ücretsiz deneyin, dilediğiniz an iptal edin.</p>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-7 max-w-6xl mx-auto items-stretch pt-6">
+            <!-- AYLIK (sol) -->
+            <div class="order-3 lg:order-1 p-8 rounded-3xl bg-surface-card border border-surface-container-high/60 shadow-xl flex flex-col h-full">
+              <div class="flex items-center justify-between">
+                <span class="font-label-sm text-label-sm uppercase tracking-wider text-text-muted font-bold">Aylık · Temel</span>
+                <span class="px-2.5 py-1 rounded-full bg-surface-container text-text-secondary font-code-metric text-xs">Taahhüt Yok</span>
+              </div>
+              <h3 class="font-headline-sm text-2xl font-bold text-text-primary mt-2">ServisPilot Aylık</h3>
+              <p class="font-body-sm text-body-sm text-text-secondary mt-2">Sistemi denemek ve dijitalleşmeye sağlam adım atmak için esnek başlangıç.</p>
+              <div class="pt-5 pb-4 mt-4 border-t border-b border-surface-container-high/40">
+                <div class="flex items-baseline gap-2">
+                  <span class="font-code-metric text-4xl font-bold text-text-primary">2.399 ₺</span>
+                  <span class="font-body-sm text-text-muted">/ ay</span>
+                </div>
+                <div class="text-xs text-text-muted font-code-metric mt-1">Aylık faturalandırılır · Dilediğiniz an iptal</div>
+              </div>
+              <ul class="space-y-2.5 text-sm text-text-primary font-body-sm mt-5">
+                <li class="flex items-start gap-2.5"><span class="material-symbols-outlined text-primary text-base shrink-0 mt-0.5">check_circle</span><span class="">Sınırsız müşteri, araç ve iş emri kaydı</span></li>
+                <li class="flex items-start gap-2.5"><span class="material-symbols-outlined text-primary text-base shrink-0 mt-0.5">check_circle</span><span class="">Ruhsat OCR ile hızlı iş emri <span class="text-text-muted">(ayda 150 okuma)</span></span></li>
+                <li class="flex items-start gap-2.5"><span class="material-symbols-outlined text-primary text-base shrink-0 mt-0.5">check_circle</span><span class="">4 butonlu dokunmatik kolay usta modu</span></li>
+                <li class="flex items-start gap-2.5"><span class="material-symbols-outlined text-primary text-base shrink-0 mt-0.5">check_circle</span><span class="">WhatsApp müşteri durum bildirimi</span></li>
+                <li class="flex items-start gap-2.5"><span class="material-symbols-outlined text-primary text-base shrink-0 mt-0.5">check_circle</span><span class="">Günlük otomatik bulut yedekleme</span></li>
+                <li class="flex items-start gap-2.5"><span class="material-symbols-outlined text-primary text-base shrink-0 mt-0.5">check_circle</span><span class="">Mesai saatleri canlı destek</span></li>
+              </ul>
+              <div class="pt-7 mt-auto">
+                <a class="w-full inline-flex items-center justify-center gap-2 py-3.5 px-6 rounded-xl bg-surface-card-elevated hover:bg-surface-bright border border-surface-container-high text-text-primary font-label-md text-label-md font-bold transition-all" href="https://wa.me/905309929505?text=Merhaba%2C%20ServisPilot%20Ayl%C4%B1k%20paketi%20(2.399%20%E2%82%BA%2Fay)%20i%C3%A7in%20kurulum%20talep%20ediyorum." target="_blank" rel="noopener" data-track="whatsapp_click" data-location="pricing-aylik">
+                  <span class="">14 Gün Ücretsiz Başla</span>
+                  <span class="material-symbols-outlined text-base">arrow_forward</span>
+                </a>
+                <p class="text-center text-xs text-text-muted mt-3">Kurulumu ekibimiz yapar</p>
+              </div>
+            </div>
+
+            <!-- YILLIK (orta — öne çıkarılmış) -->
+            <div class="order-1 lg:order-2 relative p-8 lg:p-9 rounded-3xl bg-surface-card border-2 border-primary/50 shadow-[0_20px_60px_-15px_rgba(245,158,11,0.35)] flex flex-col h-full z-10">
+              <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-gradient-to-r from-primary-container to-secondary-container text-surface-base font-label-sm text-xs font-bold uppercase tracking-wider shadow-md flex items-center gap-1.5 whitespace-nowrap">
+                <span class="material-symbols-outlined text-sm">local_fire_department</span>
+                <span class="">En Avantajlı · %33 İndirim</span>
+              </div>
+              <div class="absolute -top-24 -right-24 w-64 h-64 bg-primary/10 blur-[90px] rounded-full pointer-events-none"></div>
+              <div class="relative z-10 flex flex-col h-full">
+                <div class="flex items-center justify-between">
+                  <span class="font-label-sm text-label-sm uppercase tracking-wider text-primary font-bold">Yıllık · Tam Paket</span>
+                  <span class="px-2.5 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary font-code-metric text-xs font-bold">Her Şey Dahil</span>
+                </div>
+                <h3 class="font-headline-sm text-2xl font-bold text-text-primary mt-2">ServisPilot Yıllık</h3>
+                <p class="font-body-sm text-body-sm text-text-secondary mt-2">Kabulden faturaya tüm modüller, hediyeler ve VIP destek — en çok tercih edilen paket.</p>
+                <div class="pt-5 pb-4 mt-4 border-t border-b border-primary/20">
+                  <div class="flex items-baseline gap-2 flex-wrap">
+                    <span class="line-through text-text-muted font-code-metric text-lg">2.399 ₺</span>
+                    <span class="font-code-metric text-4xl lg:text-[2.75rem] font-bold text-primary">1.599 ₺</span>
+                    <span class="font-body-sm text-text-muted">/ ay</span>
+                  </div>
+                  <div class="text-xs text-primary/90 font-code-metric mt-1">Yıllık peşin 19.188 ₺ faturalandırılır (%33 indirim)</div>
+                  <span class="inline-flex items-center gap-1 mt-3 px-2.5 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary font-code-metric text-xs font-bold">
+                    <span class="material-symbols-outlined text-sm">savings</span>
+                    <span class="">9.600 ₺ tasarruf + 200 QR hediye</span>
+                  </span>
+                </div>
+                <ul class="space-y-2.5 text-sm text-text-primary font-body-sm mt-5">
+                  <li class="flex items-start gap-2.5"><span class="material-symbols-outlined text-primary text-base shrink-0 mt-0.5">verified</span><span class="">6 aylık paketteki her şey</span></li>
+                  <li class="flex items-start gap-2.5"><span class="material-symbols-outlined text-primary text-base shrink-0 mt-0.5">verified</span><span class=""><strong>Yerleşik GİB E-Fatura &amp; E-Arşiv</strong> (0 ₺ aracı ücreti)</span></li>
+                  <li class="flex items-start gap-2.5"><span class="material-symbols-outlined text-primary text-base shrink-0 mt-0.5">verified</span><span class="">İlk <strong>200 QR</strong> dayanıklı parça etiketi hediye</span></li>
+                  <li class="flex items-start gap-2.5"><span class="material-symbols-outlined text-primary text-base shrink-0 mt-0.5">verified</span><span class="">Şase kodu ile OEM parça &amp; donanım doğrulama</span></li>
+                  <li class="flex items-start gap-2.5"><span class="material-symbols-outlined text-primary text-base shrink-0 mt-0.5">verified</span><span class="">Öncesi/sonrası fotoğraf bulut arşivi</span></li>
+                  <li class="flex items-start gap-2.5"><span class="material-symbols-outlined text-primary text-base shrink-0 mt-0.5">verified</span><span class="">Öncelikli 7/24 telefon &amp; WhatsApp VIP destek</span></li>
+                  <li class="flex items-start gap-2.5"><span class="material-symbols-outlined text-primary text-base shrink-0 mt-0.5">verified</span><span class="">Yıllık sabit fiyat garantisi</span></li>
+                </ul>
+                <div class="pt-7 mt-auto">
+                  <a class="w-full inline-flex items-center justify-center gap-2 py-4 px-8 rounded-xl bg-gradient-to-r from-primary-container to-secondary-container text-surface-base font-label-md text-label-md font-bold shadow-[0_6px_28px_-4px_rgba(245,158,11,0.5)] hover:shadow-[0_10px_35px_-4px_rgba(245,158,11,0.7)] hover:brightness-110 transition-all" href="https://wa.me/905309929505?text=Merhaba%2C%20ServisPilot%20Y%C4%B1ll%C4%B1k%20paketini%20(%2533%20indirim%20%E2%80%94%201.599%20%E2%82%BA%2Fay%20%2B%20200%20QR%20hediye)%20i%C3%A7in%20kurulum%20talep%20ediyorum." target="_blank" rel="noopener" data-track="whatsapp_click" data-location="pricing-yillik">
+                    <span class="material-symbols-outlined text-lg">chat</span>
+                    <span class="">14 Gün Ücretsiz Başla</span>
+                    <span class="material-symbols-outlined text-lg">arrow_forward</span>
+                  </a>
+                  <p class="text-center text-xs text-primary/80 mt-3">Kurulumu ekibimiz yapar — WhatsApp'tan yazmanız yeterli.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- 6 AYLIK (sağ) -->
+            <div class="order-2 lg:order-3 p-8 rounded-3xl bg-surface-card border border-surface-container-high/60 shadow-xl flex flex-col h-full">
+              <div class="flex items-center justify-between">
+                <span class="font-label-sm text-label-sm uppercase tracking-wider text-text-muted font-bold">6 Aylık · Profesyonel</span>
+                <span class="px-2.5 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary font-code-metric text-xs font-bold">−%21</span>
+              </div>
+              <h3 class="font-headline-sm text-2xl font-bold text-text-primary mt-2">ServisPilot 6 Aylık</h3>
+              <p class="font-body-sm text-body-sm text-text-secondary mt-2">Düzenli iş akışı isteyen atölyeler için orta yol — indirim + QR hediye.</p>
+              <div class="pt-5 pb-4 mt-4 border-t border-b border-surface-container-high/40">
+                <div class="flex items-baseline gap-2 flex-wrap">
+                  <span class="line-through text-text-muted font-code-metric text-lg">2.399 ₺</span>
+                  <span class="font-code-metric text-4xl font-bold text-text-primary">1.899 ₺</span>
+                  <span class="font-body-sm text-text-muted">/ ay</span>
+                </div>
+                <div class="text-xs text-text-muted font-code-metric mt-1">6 aylık peşin 11.394 ₺ faturalandırılır (%21 indirim)</div>
+                <span class="inline-flex items-center gap-1 mt-3 px-2.5 py-1 rounded-full bg-surface-container border border-surface-container-high text-text-secondary font-code-metric text-xs font-bold">
+                  <span class="material-symbols-outlined text-sm text-primary">savings</span>
+                  <span class="">3.000 ₺ tasarruf + 100 QR hediye</span>
+                </span>
+              </div>
+              <ul class="space-y-2.5 text-sm text-text-primary font-body-sm mt-5">
+                <li class="flex items-start gap-2.5"><span class="material-symbols-outlined text-primary text-base shrink-0 mt-0.5">check_circle</span><span class="">Aylık paketteki her şey</span></li>
+                <li class="flex items-start gap-2.5"><span class="material-symbols-outlined text-primary text-base shrink-0 mt-0.5">check_circle</span><span class="">Sınırsız ruhsat &amp; plaka OCR okuma</span></li>
+                <li class="flex items-start gap-2.5"><span class="material-symbols-outlined text-primary text-base shrink-0 mt-0.5">check_circle</span><span class="">QR parça &amp; raf takibi — ilk <strong>100 QR</strong> etiket hediye</span></li>
+                <li class="flex items-start gap-2.5"><span class="material-symbols-outlined text-primary text-base shrink-0 mt-0.5">check_circle</span><span class="">WhatsApp onay portalı + PDF ekstre</span></li>
+                <li class="flex items-start gap-2.5"><span class="material-symbols-outlined text-primary text-base shrink-0 mt-0.5">check_circle</span><span class="">4 açılı görsel hasar kaydı</span></li>
+                <li class="flex items-start gap-2.5"><span class="material-symbols-outlined text-primary text-base shrink-0 mt-0.5">check_circle</span><span class="">Öncelikli telefon &amp; WhatsApp destek</span></li>
+              </ul>
+              <div class="pt-7 mt-auto">
+                <a class="w-full inline-flex items-center justify-center gap-2 py-3.5 px-6 rounded-xl bg-surface-card-elevated hover:bg-surface-bright border border-primary/30 text-text-primary font-label-md text-label-md font-bold transition-all" href="https://wa.me/905309929505?text=Merhaba%2C%20ServisPilot%206%20Ayl%C4%B1k%20paketini%20(%2521%20indirim%20%E2%80%94%201.899%20%E2%82%BA%2Fay%20%2B%20100%20QR%20hediye)%20i%C3%A7in%20kurulum%20talep%20ediyorum." target="_blank" rel="noopener" data-track="whatsapp_click" data-location="pricing-6aylik">
+                  <span class="">14 Gün Ücretsiz Başla</span>
+                  <span class="material-symbols-outlined text-base">arrow_forward</span>
+                </a>
+                <p class="text-center text-xs text-text-muted mt-3">Kurulumu ekibimiz yapar</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-14 p-6 rounded-2xl bg-surface-card border border-surface-container-high/50 max-w-4xl mx-auto flex flex-wrap items-center justify-around gap-6 text-xs text-text-secondary font-label-sm">
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-primary text-base">verified</span>
+              <span class="text-text-primary font-semibold">14 Gün Koşulsuz Ücretsiz Deneme</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-primary text-base">credit_card_off</span>
+              <span class="text-text-primary font-semibold">Kredi Kartı Bilgisi İstenmez</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-primary text-base">event_busy</span>
+              <span class="text-text-primary font-semibold">İstediğiniz An İptal</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-primary text-base">settings_backup_restore</span>
+              <span class="text-text-primary font-semibold">Eski Veri Aktarımı Ücretsiz</span>
+            </div>
+          </div>
+
+          <div class="mt-10 flex flex-wrap items-center justify-center gap-6 text-xs font-code-metric text-text-muted">
+            <div class="flex items-center gap-1.5">
+              <span class="material-symbols-outlined text-primary text-sm">call</span>
+              <span class="">0530 992 9505</span>
+            </div>
+            <span class="text-surface-bright">•</span>
+            <div class="flex items-center gap-1.5">
+              <span class="material-symbols-outlined text-green-400 text-sm">chat</span>
+              <span class="">WhatsApp: 0530 992 9505</span>
+            </div>
+            <span class="text-surface-bright">•</span>
+            <div class="flex items-center gap-1.5">
+              <span class="material-symbols-outlined text-primary text-sm">mail</span>
+              <span class="">info@servispilot.com.tr</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================= -->
+      <!-- RANDEVU / GÖRÜŞME                                                 -->
+      <!-- ================================================================= -->
+      <section class="w-full py-20 relative" id="gorusme">
+        <div class="max-w-[1200px] mx-auto px-6 lg:px-12">
+          <div class="p-8 lg:p-12 rounded-3xl bg-surface-card border border-surface-container-high/50 shadow-xl grid grid-cols-1 lg:grid-cols-2 gap-10 items-center relative overflow-hidden">
+            <div class="absolute -top-24 -right-24 w-72 h-72 bg-primary/10 blur-[100px] rounded-full pointer-events-none"></div>
+            <div class="relative z-10">
+              <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary font-label-sm text-label-sm mb-3">
+                <span class="material-symbols-outlined text-sm">event_available</span>
+                <span class="">ÜCRETSİZ GÖRÜŞME</span>
+              </div>
+              <h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-md text-text-primary">15 Dakikada Sistemi Canlı Görün</h2>
+              <p class="font-body-md text-body-md text-text-secondary mt-3 max-w-lg">Gerçek sistem ekranını biz size canlı gösterelim. Görüşmede atölyenize özel kurulum planını da çıkarıyoruz.</p>
+              <ul class="mt-6 space-y-3 text-sm text-text-primary font-body-sm">
+                <li class="flex items-start gap-2.5"><span class="material-symbols-outlined text-primary text-base shrink-0 mt-0.5">check_circle</span><span class="">Kabulden faturaya canlı kokpit turu</span></li>
+                <li class="flex items-start gap-2.5"><span class="material-symbols-outlined text-primary text-base shrink-0 mt-0.5">check_circle</span><span class="">Atölyenize özel 15 dakikalık kurulum planı</span></li>
+                <li class="flex items-start gap-2.5"><span class="material-symbols-outlined text-primary text-base shrink-0 mt-0.5">check_circle</span><span class="">Eski müşteri ve parça verilerinizin ücretsiz aktarım planı</span></li>
+              </ul>
+              <button onclick="openCalendarModal('gorusme-section')" data-track="calendar_open" data-location="gorusme-section" class="mt-8 inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl bg-gradient-to-r from-primary-container to-secondary-container text-surface-base font-label-md text-label-md font-bold shadow-[0_6px_28px_-4px_rgba(245,158,11,0.5)] hover:shadow-[0_10px_35px_-4px_rgba(245,158,11,0.7)] hover:brightness-110 transition-all">
+                <span class="material-symbols-outlined text-lg">calendar_month</span>
+                <span class="">Görüşme Planla</span>
+              </button>
+              <p class="text-xs text-text-muted font-code-metric mt-3">Ya da hemen yazın: <a class="text-primary hover:underline" href="https://wa.me/905309929505?text=Merhaba%2C%20ServisPilot%27un%2014%20g%C3%BCnl%C3%BCk%20%C3%BCcretsiz%20denemesini%20ba%C5%9Flatmak%20istiyorum." target="_blank" rel="noopener" data-track="whatsapp_click" data-location="gorusme">WhatsApp: 0530 992 95 05</a></p>
+            </div>
+            <div class="relative z-10 rounded-2xl bg-surface-container-high/60 border border-surface-container-high/60 p-8 flex flex-col items-center justify-center text-center gap-4">
+              <div class="w-16 h-16 rounded-2xl bg-primary-container/20 flex items-center justify-center text-primary">
+                <span class="material-symbols-outlined text-3xl">calendar_month</span>
+              </div>
+              <div class="font-headline-sm text-headline-sm text-text-primary">Ücretsiz Kurulum Görüşmesi</div>
+              <div class="flex flex-wrap justify-center gap-2 text-[11px] font-code-metric">
+                <span class="px-2.5 py-1 rounded-full bg-surface-card border border-surface-container-high text-text-secondary">⏱ 15 dk</span>
+                <span class="px-2.5 py-1 rounded-full bg-surface-card border border-surface-container-high text-text-secondary">₺0 Ücretsiz</span>
+                <span class="px-2.5 py-1 rounded-full bg-surface-card border border-surface-container-high text-text-secondary">💻 Çevrimiçi</span>
+              </div>
+              <button onclick="openCalendarModal('gorusme-card')" data-track="calendar_open" data-location="gorusme-card" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-surface-card-elevated hover:bg-surface-bright border border-primary/30 text-text-primary font-label-md text-label-md font-bold transition-all">
+                <span class="material-symbols-outlined text-base text-primary">calendar_month</span>
+                <span class="">Takvimden Randevu Al</span>
+              </button>
+              <p class="text-[11px] text-text-muted font-code-metric">Takvim penceresi açılır · İstediğiniz saati seçin</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================= -->
+      <!-- SIKÇA SORULAN SORULAR                                             -->
+      <!-- ================================================================= -->
+      <section class="w-full py-20 bg-surface-container-lowest/30" id="sikca-sorulanlar">
+        <div class="max-w-[800px] mx-auto px-6 lg:px-12">
+          <div class="text-center mb-12">
+            <span class="font-label-sm text-label-sm uppercase tracking-wider text-primary">Merak Edilenler</span>
+            <h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-text-primary mt-2">Sıkça Sorulan Sorular</h2>
+          </div>
+          <div class="space-y-4">
+            <!-- Accordion 1 -->
+            <div class="rounded-xl bg-surface-card overflow-hidden">
+              <button class="w-full p-5 text-left flex items-center justify-between gap-4" onclick="toggleFaq('faq-1')">
+                <span class="font-label-md text-label-md text-text-primary font-semibold">Ustalarım bilgisayara alışkın değil, kullanabilir mi?</span>
+                <span class="material-symbols-outlined text-primary transition-transform" id="faq-1-icon">expand_more</span>
+              </button>
+              <div class="hidden px-5 pb-5 text-text-secondary font-body-md text-body-md border-t border-surface-container-high/40 pt-3" id="faq-1">
+                Kesinlikle evet. ServisPilot, bilgisayar kullanmayı bilmeyen ustalar düşünülerek tasarlandı. "Usta Kokpiti" modunda sadece 4 adet büyük, renkli ve net buton bulunur. Okuma-yazma ve temel telefon kullanımı yeterlidir.
+              </div>
+            </div>
+            <!-- Accordion 2 -->
+            <div class="rounded-xl bg-surface-card overflow-hidden">
+              <button class="w-full p-5 text-left flex items-center justify-between gap-4" onclick="toggleFaq('faq-2')">
+                <span class="font-label-md text-label-md text-text-primary font-semibold">Mevcut müşteri ve parça kayıtlarımızı aktarabilir miyiz?</span>
+                <span class="material-symbols-outlined text-primary transition-transform" id="faq-2-icon">expand_more</span>
+              </button>
+              <div class="hidden px-5 pb-5 text-text-secondary font-body-md text-body-md border-t border-surface-container-high/40 pt-3" id="faq-2">
+                Evet. Excel veya CSV formatındaki tüm eski müşteri listenizi, cari bakiyelerinizi ve parça stoklarınızı teknik ekibimiz 15 dakika içinde ServisPilot'a eksiksiz aktarır. Hiçbir veri kaybı yaşamazsınız.
+              </div>
+            </div>
+            <!-- Accordion 3 -->
+            <div class="rounded-xl bg-surface-card overflow-hidden">
+              <button class="w-full p-5 text-left flex items-center justify-between gap-4" onclick="toggleFaq('faq-3')">
+                <span class="font-label-md text-label-md text-text-primary font-semibold">GİB E-Fatura için ek entegratör ücreti öder miyim?</span>
+                <span class="material-symbols-outlined text-primary transition-transform" id="faq-3-icon">expand_more</span>
+              </button>
+              <div class="hidden px-5 pb-5 text-text-secondary font-body-md text-body-md border-t border-surface-container-high/40 pt-3" id="faq-3">
+                Hayır. ServisPilot yerleşik Gelir İdaresi Başkanlığı (GİB) E-Arşiv / E-Fatura altyapısıyla entegredir. Dışarıdaki pahalı üçüncü taraf entegratör yazılımlarına ayrıca lisans veya aracı ücreti ödemezsiniz.
+              </div>
+            </div>
+            <!-- Accordion 4 -->
+            <div class="rounded-xl bg-surface-card overflow-hidden">
+              <button class="w-full p-5 text-left flex items-center justify-between gap-4" onclick="toggleFaq('faq-4')">
+                <span class="font-label-md text-label-md text-text-primary font-semibold">Verilerimiz güvende mi ve yedekleniyor mu?</span>
+                <span class="material-symbols-outlined text-primary transition-transform" id="faq-4-icon">expand_more</span>
+              </button>
+              <div class="hidden px-5 pb-5 text-text-secondary font-body-md text-body-md border-t border-surface-container-high/40 pt-3" id="faq-4">
+                Tüm verileriniz ISO 27001 ve KVKK uyumlu Türkiye merkezli sunucularda 256-bit SSL şifreleme ile barındırılır. Günlük otomatik çift yedekleme sayesinde cihazınız çalınsa veya bozulsa dahi hiçbir bilginiz silinmez.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================= -->
+      <!-- BOTTOM CONVERSION CTA BANNER                                      -->
+      <!-- ================================================================= -->
+      <section class="w-full py-20 relative overflow-hidden">
+        <div class="max-w-[1200px] mx-auto px-6 lg:px-12">
+          <div class="p-10 lg:p-16 rounded-3xl bg-gradient-to-r from-surface-card via-surface-card-elevated to-surface-card shadow-2xl flex flex-col items-center text-center relative">
+            <div class="w-16 h-16 rounded-2xl bg-primary-container/20 flex items-center justify-center text-primary mb-6">
+              <span class="material-symbols-outlined text-3xl">rocket_launch</span>
+            </div>
+            <h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-text-primary max-w-2xl">Servisinizi Bugün Dijitalleştirin.</h2>
+            <p class="font-body-lg text-body-lg text-text-secondary mt-3 max-w-xl">14 gün boyunca tüm özellikleri ücretsiz ve sınırsız deneyin. Kart bilgisi gerekmez.</p>
+            <div class="mt-8 flex flex-col sm:flex-row items-center gap-4">
+              <a class="inline-flex items-center justify-center px-8 py-4 rounded-xl bg-gradient-to-r from-primary-container to-secondary-container text-surface-base font-label-md text-label-md font-bold shadow-xl hover:brightness-110 transition-all" data-path="kayit-ol" data-track="whatsapp_click" data-location="bottom-cta" href="https://wa.me/905309929505?text=Merhaba%2C%20ServisPilot%27un%2014%20g%C3%BCnl%C3%BCk%20%C3%BCcretsiz%20denemesini%20ba%C5%9Flatmak%20istiyorum." target="_blank" rel="noopener">
+                <span class="">14 Gün Ücretsiz Başla</span>
+              </a>
+              <a class="inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-surface-card hover:bg-surface-bright text-text-primary font-label-md text-label-md transition-all" href="https://wa.me/905309929505?text=Merhaba%2C%20ServisPilot%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." rel="noopener" target="_blank" data-track="whatsapp_click" data-location="bottom-whatsapp">
+                <span class="material-symbols-outlined text-green-400">chat</span>
+                <span class="">WhatsApp Destek Hattı</span>
+              </a>
+            </div>
+            <!-- Direct Contacts Ribbon -->
+            <div class="mt-12 pt-8 border-t border-surface-container-high/60 flex flex-wrap items-center justify-center gap-6 text-xs font-code-metric text-text-muted">
+              <div class="flex items-center gap-1.5">
+                <span class="material-symbols-outlined text-primary text-sm">call</span>
+                <span class="">0530 992 9505</span>
+              </div>
+              <span class="text-surface-bright">•</span>
+              <div class="flex items-center gap-1.5">
+                <span class="material-symbols-outlined text-green-400 text-sm">chat</span>
+                <span class="">WhatsApp: 0530 992 9505</span>
+              </div>
+              <span class="text-surface-bright">•</span>
+              <div class="flex items-center gap-1.5">
+                <span class="material-symbols-outlined text-primary text-sm">mail</span>
+                <span class="">info@servispilot.com.tr</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ================================================================= -->
+  <!-- FOOTER                                                            -->
+  <!-- ================================================================= -->
+  <footer class="w-full bg-surface-card-elevated/40 backdrop-blur-md">
+    <div class="max-w-[1200px] mx-auto px-6 lg:px-12 py-12 flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="flex flex-col sm:flex-row items-center gap-3 text-center sm:text-left">
+        <span class="font-body-sm text-body-sm text-text-muted">© 2026 ServisPilot Teknoloji A.Ş. Tüm hakları saklıdır.</span>
+        <div class="hidden sm:block w-1 h-1 rounded-full bg-surface-bright"></div>
+        <span class="font-code-metric text-code-metric text-text-muted text-[12px]">Sürüm 3.4.0-TR Enterprise</span>
+      </div>
+      <div class="flex flex-wrap items-center justify-center gap-6">
+        <div class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-card text-text-secondary">
+          <span class="material-symbols-outlined text-primary text-[16px]">cloud_done</span>
+          <span class="font-label-sm text-label-sm text-on-surface-variant">ISO 27001 Bulut</span>
+        </div>
+        <div class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-card text-text-secondary">
+          <span class="material-symbols-outlined text-primary text-[16px]">verified_user</span>
+          <span class="font-label-sm text-label-sm text-on-surface-variant">KVKK Uyumlu</span>
+        </div>
+        <a class="font-body-sm text-body-sm text-text-secondary hover:text-on-surface transition-colors" data-path="gizlilik-politikasi" href="#">Gizlilik</a>
+        <a class="font-body-sm text-body-sm text-text-secondary hover:text-on-surface transition-colors" data-path="hizmet-sartlari" href="#">Kullanım Şartları</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Mobil sticky CTA bar -->
+  <div class="fixed bottom-0 inset-x-0 z-40 lg:hidden bg-surface-base/95 backdrop-blur-xl border-t border-surface-container-high/60 px-4 py-3 flex gap-3 shadow-[0_-4px_20px_rgba(0,0,0,0.4)]" id="sticky-cta">
+    <a class="flex-1 inline-flex items-center justify-center gap-2 py-3 rounded-xl bg-gradient-to-r from-primary-container to-secondary-container text-surface-base font-label-md text-label-md font-bold shadow" href="https://wa.me/905309929505?text=Merhaba%2C%20ServisPilot%27un%2014%20g%C3%BCnl%C3%BCk%20%C3%BCcretsiz%20denemesini%20ba%C5%9Flatmak%20istiyorum." target="_blank" rel="noopener" data-track="whatsapp_click" data-location="sticky">
+      <span class="material-symbols-outlined text-base">chat</span>
+      <span class="">WhatsApp'tan Başla</span>
+    </a>
+    <button class="flex-1 inline-flex items-center justify-center gap-2 py-3 rounded-xl bg-surface-card border border-surface-container-high text-text-primary font-label-md text-label-md font-bold" onclick="openCalendarModal('sticky')" data-track="calendar_open" data-location="sticky">
+      <span class="material-symbols-outlined text-base text-primary">calendar_month</span>
+      <span class="">Görüşme Planla</span>
+    </button>
+  </div>
+
+  <!-- Randevu takvimi modalı -->
+  <div id="calendar-modal" class="hidden fixed inset-0 z-[60] bg-black/70 backdrop-blur-sm items-center justify-center p-4" onclick="if(event.target===this)closeCalendarModal()">
+    <div class="bg-surface-card border border-surface-container-high rounded-2xl w-full max-w-2xl overflow-hidden shadow-2xl">
+      <div class="h-14 px-5 flex items-center justify-between bg-surface-container-high/90 border-b border-surface-container-high">
+        <div class="flex items-center gap-2">
+          <span class="material-symbols-outlined text-primary text-base">calendar_month</span>
+          <span class="font-label-md text-label-md text-text-primary font-semibold">Ücretsiz Kurulum Görüşmesi Planla</span>
+        </div>
+        <button class="w-8 h-8 rounded-lg bg-surface-card flex items-center justify-center text-text-secondary hover:text-text-primary transition-colors" onclick="closeCalendarModal()" aria-label="Kapat">
+          <span class="material-symbols-outlined text-base">close</span>
+        </button>
+      </div>
+      <div id="calendar-modal-body" class="min-h-[480px] max-h-[75vh] overflow-auto"></div>
+    </div>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/analytics.js"></script>
+  <script src="js/main.js" defer></script>
+  <script src="js/demo-engine.js" defer></script>
+</body>
+</html>
