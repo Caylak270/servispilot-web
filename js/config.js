@@ -19,5 +19,14 @@ window.SERVISPILOT_CONFIG = {
   analytics: {
     ga4Id: '',      // ör: 'G-XXXXXXXXXX'
     clarityId: ''   // ör: 'xxxxxxxxxx' (Microsoft Clarity proje ID)
+  },
+
+  // Pilot Asistan — site içi chatbot (js/chatbot.js). Ücretsizdir, üçüncü
+  // taraf hesap gerektirmez. enabled: false → balon tamamen kalkar.
+  // showOnMobile: true → mobilde sticky bar üzerinde de gösterilir.
+  chat: {
+    enabled: true,
+    assistantName: 'Pilot Asistan',
+    showOnMobile: false
   }
 };

@@ -1,0 +1,5 @@
+# ServisPilot — robots.txt
+User-agent: *
+Allow: /
+
+Sitemap: https://www.servispilot.com.tr/sitemap.xml

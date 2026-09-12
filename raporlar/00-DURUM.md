@@ -17,23 +17,29 @@
 - [x] **Fiyatlandırma — 3 kartlı satış funnel'i** (Aylık 2.399 / **Yıllık 1.599 −%33** / 6 Aylık 1.899 −%21 + 100 QR; sayı fontu Space Grotesk) → 12
 - [x] **Kokpit modern yeniden tasarım** (stoaix/chatflow dili: sidebar kaldırıldı, hap çipler, telefon mockup'ı, toast bildirimleri) → **13**
 - [x] **GitHub push:** github.com/Caylak270/servispilot-web (private, main) + gh CLI kurulumu → **15**
+- [x] **Pilot Asistan — site içi chatbot** (kendi kodumuz, ücretsiz; üçüncü taraf kararı 14. raporda) → **16**
+- [x] **JSON-LD şema** (Organization + SoftwareApplication + FAQPage) + canonical/og:url → **16**
+- [x] **sitemap.xml + robots.txt** → **16**
+- [x] **Yasal sayfa şablonları** (gizlilik.html + kullanim-sartlari.html; `[...]` yer tutuculu) + footer bağlantıları → **16**
+- [x] Chatbot tarayıcıda test edildi (8 senaryo + görsel doğrulama; "yedek" anahtar kelime çakışması düzeltildi) → **16**
 
 ## Sıradaki
-0. **Chatbot entegrasyonu (ücretsiz)** → öneri ve karşılaştırma **14. raporda** (tawk.to ile başla önerisi)
-1. **Canlı demo linki** (kullanıcı verecek) → kokpit bölümüne gömme; plan 11. raporda
-2. **Karşılaştırma tablosu + ROI hesaplayıcı** (Faz 1.5 — stoaix deseni)
-3. Tailwind CDN → derlenmiş CSS (Faz 0.3)
-4. Yasal sayfalar (KVKK/Gizlilik — şirket bilgisi gerekli)
-5. 21st.dev ile premium görsel yükseltme (Faz 3 — ZCode restart sonrası MCP aktif)
-6. Görsellerdeki gerçek müşteri verilerinin test verisiyle yenilenmesi (yayın öncesi)
+1. **Alan adı teyidi** (servispilot.com.tr varsayıldı) → canonical/og:url/JSON-LD/sitemap/robots güncellenir
+2. **Canlı demo linki** (kullanıcı verecek) → kokpit bölümüne gömme; plan 11. raporda
+3. **Karşılaştırma tablosu + ROI hesaplayıcı** (Faz 1.5 — stoaix deseni)
+4. Tailwind CDN → derlenmiş CSS (Faz 0.3)
+5. Yasal sayfaların yer tutucularının doldurulması + avukat kontrolü (şirket bilgisi gerekli)
+6. 21st.dev ile premium görsel yükseltme (Faz 3 — ZCode restart sonrası MCP aktif)
+7. Görsellerdeki gerçek müşteri verilerinin test verisiyle yenilenmesi (yayın öncesi)
 
 ## Kullanıcıdan beklenen girdiler
 | Girdi | Nereye | Etkisi |
 |---|---|---|
+| **Alan adı teyidi** (https://www.servispilot.com.tr varsayıldı) | canonical/og:url/JSON-LD/sitemap/robots | SEO adresleri kesinleşir |
 | **Cal.com randevu linki** (sözlendi, sonraki adımda gelecek) | `js/config.js` → `calendar.url` | Modal gerçek takvimi gösterir |
 | GA4 ölçüm ID (G-XXXXXXX) | `js/config.js` → `analytics.ga4Id` | GA4 otomatik yüklenir |
 | Microsoft Clarity ID | `js/config.js` → `analytics.clarityId` | Heatmap + session kaydı |
-| Şirket unvan/adres/veri no | Yasal sayfalar | KVKK sayfaları tamamlanır |
+| Şirket unvan/adres/vergi no | gizlilik.html + kullanim-sartlari.html | Yasal sayfalar tamamlanır |
 
 ## Teknik notlar
 - Geliştirme testlerinde tarayıcı önbelleği eski HTML'i sunabilir → `?v=...` veya Ctrl+F5. Yayınlarken HTML için `Cache-Control: no-cache` ayarlanmalı.
