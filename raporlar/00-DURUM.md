@@ -20,6 +20,7 @@
 - [x] **Pilot Asistan — site içi chatbot** (kendi kodumuz, ücretsiz; üçüncü taraf kararı 14. raporda) → **16**
 - [x] **JSON-LD şema** (Organization + SoftwareApplication + FAQPage) + canonical/og:url → **16**
 - [x] **sitemap.xml + robots.txt** → **16**
+- [x] **Yeni S°P monogram logosu** (şeffaf header PNG + favicon + OG kartı; eski logo.jpg kaldırıldı) → **17**
 - [x] **Yasal sayfa şablonları** (gizlilik.html + kullanim-sartlari.html; `[...]` yer tutuculu) + footer bağlantıları → **16**
 - [x] Chatbot tarayıcıda test edildi (8 senaryo + görsel doğrulama; "yedek" anahtar kelime çakışması düzeltildi) → **16**
 
