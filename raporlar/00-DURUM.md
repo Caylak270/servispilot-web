@@ -18,6 +18,7 @@
 - [x] **Kokpit modern yeniden tasarım** (stoaix/chatflow dili: sidebar kaldırıldı, hap çipler, telefon mockup'ı, toast bildirimleri) → **13**
 
 ## Sıradaki
+0. **Chatbot entegrasyonu (ücretsiz)** → öneri ve karşılaştırma **14. raporda** (tawk.to ile başla önerisi)
 1. **Canlı demo linki** (kullanıcı verecek) → kokpit bölümüne gömme; plan 11. raporda
 2. **Karşılaştırma tablosu + ROI hesaplayıcı** (Faz 1.5 — stoaix deseni)
 3. Tailwind CDN → derlenmiş CSS (Faz 0.3)
