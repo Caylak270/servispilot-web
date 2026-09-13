@@ -8,11 +8,10 @@ window.SERVISPILOT_CONFIG = {
   // Satış WhatsApp hattı (boşluksuz uluslararası format)
   whatsappNumber: '905309929505',
 
-  // Randevu takvimi: Calendly / Cal.com etkinlik bağlantınızı buraya yapıştırın.
-  // Örnek: 'https://calendly.com/servispilot/15dk'
-  // Boşsa takvim penceresi WhatsApp'a yönlendiren bir yedek ekran gösterir.
+  // Randevu takvimi: Cal.com etkinlik bağlantınız (API anahtarı gerektirmez).
+  // Değiştirmek için: cal.com panosunda yeni etkinlik açın → linkini buraya yapıştırın.
   calendar: {
-    url: ''
+    url: 'https://cal.com/servispilot.com.tr/15min'
   },
 
   // Ölçüm: ID'leri girince ilgili script otomatik yüklenir.
