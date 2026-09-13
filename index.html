@@ -29,6 +29,20 @@
       .js [data-motion] { opacity: 0; transform: translateY(18px); transition: opacity .65s cubic-bezier(.22,.61,.36,1), transform .65s cubic-bezier(.22,.61,.36,1); transition-delay: var(--md, 0ms); will-change: opacity, transform; }
       .js [data-motion].in-view { opacity: 1; transform: translateY(0); }
     }
+    /* 21st.dev uyarlamasi: hero animasyonlari (marka renkleri) */
+    .hero-pattern { background: repeating-linear-gradient(45deg, transparent, transparent 14px, rgba(255,168,16,.55) 14px, rgba(255,168,16,.55) 28px); }
+    .hero-line { fill: none; }
+    @keyframes gradientCycle { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+    @keyframes patternScroll { 0% { transform: translate(-3%, -3%); } 100% { transform: translate(3%, 3%); } }
+    @keyframes ctaPulse { 0%, 100% { box-shadow: 0 6px 28px -4px rgba(245,158,11,.5); } 50% { box-shadow: 0 6px 34px 2px rgba(246,96,24,.6); } }
+    @keyframes heroDraw { to { stroke-dashoffset: 0; } }
+    @media (prefers-reduced-motion: no-preference) {
+      span.hero-gradient-text { background-image: linear-gradient(270deg, #ffc174, #f59e0b, #f66018, #e0a800, #ffc174); background-size: 500% 500%; animation: gradientCycle 9s ease infinite; }
+      .hero-pattern { animation: patternScroll 26s linear infinite; }
+      a.cta-pulse { animation: ctaPulse 3s ease-in-out infinite; }
+      .hero-line { stroke-dasharray: 520; stroke-dashoffset: 520; animation: heroDraw 2.2s cubic-bezier(.4, 0, .2, 1) .9s forwards; }
+      .hero-line-delay { animation-delay: 1.2s; }
+    }
     @keyframes demoScan { 0% { top: 0; } 100% { top: calc(100% - 2px); } }
     .qr-scanline { position: absolute; left: 4px; right: 4px; height: 2px; background: #ffc174; box-shadow: 0 0 12px 2px rgba(255,193,116,.8); animation: demoScan 1.1s linear infinite; z-index: 5; }
     @keyframes stampIn { 0% { transform: scale(1.7) rotate(-14deg); opacity: 0; } 60% { transform: scale(.95) rotate(-8deg); opacity: 1; } 100% { transform: scale(1) rotate(-8deg); opacity: 1; } }
@@ -280,6 +294,13 @@
       <!-- HERO SECTION                                                      -->
       <!-- ================================================================= -->
       <section class="relative w-full pt-28 pb-20 lg:pt-36 lg:pb-28 overflow-hidden">
+        <div class="hero-pattern pointer-events-none absolute -inset-1/2 opacity-[0.05] hidden lg:block" aria-hidden="true"></div>
+        <svg class="hero-line-draw pointer-events-none absolute top-24 left-0 w-[36%] h-36 opacity-40 hidden lg:block" viewBox="0 0 500 144" fill="none" preserveAspectRatio="none" aria-hidden="true">
+          <path class="hero-line" d="M0 1 L380 1 C424 1 424 44 424 44 L500 44" stroke="#f59e0b" stroke-width="1.5"/>
+        </svg>
+        <svg class="hero-line-draw pointer-events-none absolute top-24 right-0 w-[36%] h-36 opacity-40 hidden lg:block" viewBox="0 0 500 144" fill="none" preserveAspectRatio="none" aria-hidden="true">
+          <path class="hero-line hero-line-delay" d="M500 1 L120 1 C76 1 76 44 76 44 L0 44" stroke="#f66018" stroke-width="1.5"/>
+        </svg>
         <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-primary-container/10 blur-[140px] rounded-full pointer-events-none"></div>
         <div class="absolute top-0 right-1/4 w-96 h-96 bg-secondary-container/15 blur-[120px] rounded-full pointer-events-none"></div>
         <div class="max-w-[1200px] mx-auto px-6 lg:px-12 relative z-10 flex flex-col items-center text-center">
@@ -292,14 +313,14 @@
           </div>
           <h1 data-motion data-delay="80" class="font-display text-display-mobile md:text-display text-text-primary tracking-tight max-w-4xl leading-tight mb-6">
             Oto Servis Yönetiminde
-            <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary via-primary-container to-secondary-container">Kusursuz Düzen</span>
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary via-primary-container to-secondary-container hero-gradient-text">Kusursuz Düzen</span>
             &amp; Kusursuz Hız.
           </h1>
           <p data-motion data-delay="160" class="font-body-lg text-body-lg text-text-secondary max-w-2xl mb-10 text-balance leading-relaxed">
             Ruhsat OCR ile saniyeler içinde iş emri açın, QR kod ile parça stoklarınızı kayıpsız yönetin, WhatsApp onay portalı ve yerleşik GİB E-Fatura ile tahsilatlarınızı ışık hızına çıkarın.
           </p>
           <div data-motion data-delay="240" class="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto mb-5">
-            <a class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-gradient-to-r from-primary-container to-secondary-container text-surface-base font-label-md text-label-md font-bold shadow-[0_6px_28px_-4px_rgba(245,158,11,0.5)] hover:shadow-[0_10px_35px_-4px_rgba(245,158,11,0.7)] hover:brightness-110 transition-all" data-track="whatsapp_click" data-location="hero" href="https://wa.me/905309929505?text=Merhaba%2C%20ServisPilot%27un%2014%20g%C3%BCnl%C3%BCk%20%C3%BCcretsiz%20denemesini%20ba%C5%9Flatmak%20istiyorum." target="_blank" rel="noopener">
+            <a class="cta-pulse w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-gradient-to-r from-primary-container to-secondary-container text-surface-base font-label-md text-label-md font-bold shadow-[0_6px_28px_-4px_rgba(245,158,11,0.5)] hover:shadow-[0_10px_35px_-4px_rgba(245,158,11,0.7)] hover:brightness-110 transition-all" data-track="whatsapp_click" data-location="hero" href="https://wa.me/905309929505?text=Merhaba%2C%20ServisPilot%27un%2014%20g%C3%BCnl%C3%BCk%20%C3%BCcretsiz%20denemesini%20ba%C5%9Flatmak%20istiyorum." target="_blank" rel="noopener">
               <span class="">14 Gün Ücretsiz Başla (Kredi Kartsız)</span>
               <span class="material-symbols-outlined text-lg">arrow_forward</span>
             </a>
