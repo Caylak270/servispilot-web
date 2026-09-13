@@ -134,15 +134,21 @@ function openCalendarModal(location) {
     }
     body.dataset.loaded = '1';
   }
-  modal.classList.remove('hidden');
+  modal.classList.remove('hidden', 'closing');
   modal.classList.add('flex');
+  void modal.offsetWidth; // gecisi garantiye al (reflow)
+  modal.classList.add('open');
 }
 
 function closeCalendarModal() {
   const modal = document.getElementById('calendar-modal');
-  if (!modal) return;
-  modal.classList.add('hidden');
-  modal.classList.remove('flex');
+  if (!modal || modal.classList.contains('closing')) return;
+  modal.classList.remove('open');
+  modal.classList.add('closing');
+  setTimeout(() => {
+    modal.classList.add('hidden');
+    modal.classList.remove('flex', 'closing');
+  }, 260);
 }
 
 document.addEventListener('keydown', function (e) {

@@ -116,5 +116,23 @@ document.documentElement.classList.add('js');
     document.getElementById('roi-pct-v').textContent = '%' + pct.value;
   }
   [cars, avg, pct].forEach((el) => el.addEventListener('input', calc));
+  [cars, avg, pct].forEach((el) => el.addEventListener('change', () => {
+    ['roi-month', 'roi-year'].forEach((id) => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      el.classList.remove('pop');
+      void el.offsetWidth;
+      el.classList.add('pop');
+    });
+  }));
   calc();
 })();
+
+// 21st.dev Spotlight: imleci takip eden isik (kartlar)
+document.querySelectorAll('.spot-card').forEach((card) => {
+  card.addEventListener('pointermove', (e) => {
+    const r = card.getBoundingClientRect();
+    card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+    card.style.setProperty('--my', (e.clientY - r.top) + 'px');
+  });
+});
