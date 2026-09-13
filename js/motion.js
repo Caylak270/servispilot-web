@@ -82,3 +82,39 @@ document.documentElement.classList.add('js');
   window.addEventListener('load', initReveals);
   setTimeout(initReveals, 800);
 })();
+
+// Döner kelime (hero) — stoaix "Built for …" deseni
+(function () {
+  const rw = document.getElementById('rotating-word');
+  if (!rw) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const words = ['iş emri defteri.', 'stok defterin.', 'cari defterin.', 'randevu defterin.'];
+  let i = 0;
+  setInterval(() => {
+    rw.classList.add('swap');
+    setTimeout(() => {
+      i = (i + 1) % words.length;
+      rw.textContent = words[i];
+      rw.classList.remove('swap');
+    }, 270);
+  }, 2600);
+})();
+
+// ROI hesaplayıcı — canlı hesap
+(function () {
+  const cars = document.getElementById('roi-cars');
+  if (!cars) return;
+  const avg = document.getElementById('roi-avg');
+  const pct = document.getElementById('roi-pct');
+  const fmt = (v) => '₺' + Math.round(v).toLocaleString('tr-TR');
+  function calc() {
+    const lost = (+cars.value) * (+avg.value) * ((+pct.value) / 100);
+    document.getElementById('roi-month').textContent = fmt(lost);
+    document.getElementById('roi-year').textContent = fmt(lost * 12);
+    document.getElementById('roi-cars-v').textContent = cars.value + ' araç';
+    document.getElementById('roi-avg-v').textContent = '₺' + (+avg.value).toLocaleString('tr-TR');
+    document.getElementById('roi-pct-v').textContent = '%' + pct.value;
+  }
+  [cars, avg, pct].forEach((el) => el.addEventListener('input', calc));
+  calc();
+})();

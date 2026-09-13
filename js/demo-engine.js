@@ -9,8 +9,8 @@
 const DemoEngine = (function () {
   const SCENARIOS = ['kabul', 'usta', 'stok', 'fatura'];
 
-  const CHIP_ON = 'scenario-chip px-4 py-1.5 rounded-full text-[13px] font-semibold transition-all bg-primary-container text-surface-base shadow';
-  const CHIP_OFF = 'scenario-chip px-4 py-1.5 rounded-full text-[13px] font-semibold transition-all bg-surface-card/70 text-text-secondary border border-surface-container-high/60 hover:text-text-primary hover:border-primary/40';
+  const CHIP_ON = 'scenario-chip px-4 py-1.5 rounded-full text-[13px] font-semibold transition-all bg-primary-container text-[#472A00] shadow';
+  const CHIP_OFF = 'scenario-chip px-4 py-1.5 rounded-full text-[13px] font-semibold transition-all bg-white text-[#5B6B7C] border border-[#E7E2D6] hover:text-[#16202E] hover:border-[#E8930C]/50';
 
   let gen = 0;               // iptal/jenerasyon sayacı
   let mode = 'auto';         // 'auto' | 'single'
@@ -262,11 +262,11 @@ const DemoEngine = (function () {
     const b = $('demo-takeover');
     if (!b) return;
     if (paused) {
-      b.textContent = '▶ Otomatiğe Dön';
-      b.className = 'px-4 py-1.5 rounded-full text-[13px] font-semibold transition-all bg-primary/10 text-primary border border-primary/30 hover:bg-primary/20';
+      b.innerHTML = '<span class="material-symbols-outlined text-sm align-middle mr-1">play_arrow</span>Otomatiğe Dön';
+      b.className = 'px-4 py-1.5 rounded-full text-[13px] font-semibold transition-all bg-primary/10 text-primary border border-primary/30 hover:bg-primary/20 font-bold';
     } else {
-      b.textContent = '✋ Kendin Dene';
-      b.className = 'px-4 py-1.5 rounded-full text-[13px] font-semibold transition-all bg-green-500/10 text-green-400 border border-green-500/30 hover:bg-green-500/20';
+      b.innerHTML = '<span class="material-symbols-outlined text-sm align-middle mr-1">pan_tool</span>Kendin Dene';
+      b.className = 'px-4 py-1.5 rounded-full text-[13px] font-semibold transition-all bg-green-500/10 text-green-700 border border-green-500/30 hover:bg-green-500/20 font-bold';
     }
   }
 
