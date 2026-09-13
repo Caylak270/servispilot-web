@@ -26,22 +26,23 @@
 - [x] **Yasal sayfa şablonları** (gizlilik.html + kullanim-sartlari.html; `[...]` yer tutuculu) + footer bağlantıları → **16**
 - [x] Chatbot tarayıcıda test edildi (8 senaryo + görsel doğrulama; "yedek" anahtar kelime çakışması düzeltildi) → **16**
 - [x] **Pilot Asistan 2.0 — gerçek AI sohbet** (Vercel serverless proxy: Z.ai birincil + Groq gpt-oss-120b yedek; 3 katmanlı fallback, rate limit, CORS; Groq'un llama-3.3 modeli kalktığı için gpt-oss-120b) → **20**
+- [x] **Giriş sayfası + giriş butonları aktif** (giris.html — temalı; Giriş Yap + person ikonu bağlı; auth endpoint'i gelene kadar WhatsApp fallback; dashboard yönlendirmesi config'ten) → **21**
 
 ## Sıradaki
 1. **AI anahtarlarının Vercel'e girilmesi** (kullanıcı): `ZAI_API_KEY` + `GROQ_API_KEY` → Environment Variables → Redeploy; anahtar gelene kadar canlı sitede anahtar kelime motoru çalışır → **20**
-2. **Alan adı teyidi** (servispilot.com.tr varsayıldı) → canonical/og:url/JSON-LD/sitemap/robots güncellenir
-3. **Canlı demo linki** (kullanıcı verecek) → kokpit bölümüne gömme; plan 11. raporda
-4. **Karşılaştırma tablosu + ROI hesaplayıcı** (Faz 1.5 — stoaix deseni)
-5. Tailwind CDN → derlenmiş CSS (Faz 0.3)
-6. Yasal sayfaların yer tutucularının doldurulması + avukat kontrolü (şirket bilgisi gerekli)
-7. Görsellerdeki gerçek müşteri verilerinin test verisiyle yenilenmesi (yayın öncesi)
+2. **Auth endpoint'inin bağlanması** (yazılımcı abi root'a bağlarken): `js/config.js` → `app.loginEndpoint` (ör. '/api/login') → giriş sayfası gerçek doğrulamaya geçer → **21**
+3. **Alan adı teyidi** (servispilot.com.tr — dashboard adresiyle teyit edildi gibi; canonical/JSON-LD'de www varyantı kontrol edilecek)
+4. **Canlı demo linki** (kullanıcı verecek) → kokpit bölümüne gömme; plan 11. raporda
+5. **Karşılaştırma tablosu + ROI hesaplayıcı** (Faz 1.5 — stoaix deseni)
+6. Tailwind CDN → derlenmiş CSS (Faz 0.3)
+7. Yasal sayfaların yer tutucularının doldurulması + avukat kontrolü (şirket bilgisi gerekli)
+8. Görsellerdeki gerçek müşteri verilerinin test verisiyle yenilenmesi (yayın öncesi)
 
 ## Kullanıcıdan beklenen girdiler
 | Girdi | Nereye | Etkisi |
 |---|---|---|
+| **Auth endpoint'i** (yazılımcı abi bağlarken) | `js/config.js` → `app.loginEndpoint` | Giriş sayfası gerçek doğrulamaya geçer |
 | **Z.ai + Groq API anahtarları** (kredi kartı gerekmez) | Vercel → Environment Variables → `ZAI_API_KEY`, `GROQ_API_KEY` | Pilot Asistan gerçek AI'ya geçer |
-| **Alan adı teyidi** (https://www.servispilot.com.tr varsayıldı) | canonical/og:url/JSON-LD/sitemap/robots | SEO adresleri kesinleşir |
-| **Cal.com randevu linki** (sözlendi, sonraki adımda gelecek) | `js/config.js` → `calendar.url` | Modal gerçek takvimi gösterir |
 | GA4 ölçüm ID (G-XXXXXXX) | `js/config.js` → `analytics.ga4Id` | GA4 otomatik yüklenir |
 | Microsoft Clarity ID | `js/config.js` → `analytics.clarityId` | Heatmap + session kaydı |
 | Şirket unvan/adres/vergi no | gizlilik.html + kullanim-sartlari.html | Yasal sayfalar tamamlanır |

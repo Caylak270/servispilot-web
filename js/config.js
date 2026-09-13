@@ -14,6 +14,16 @@ window.SERVISPILOT_CONFIG = {
     url: 'https://cal.com/servispilot.com.tr/15min'
   },
 
+  // Uygulama / giriş
+  // dashboardUrl: gerçek girişten sonraki yönlendirme adresi.
+  // loginEndpoint: kimlik doğrulama uç noktası (ör: '/api/login'). BOŞSA giriş
+  //   sayfası "sistem yakında aktif" ekranı + WhatsApp fallback gösterir — sahte giriş yapmaz.
+  app: {
+    dashboardUrl: 'https://servispilot.com.tr/dashboard',
+    loginEndpoint: '',
+    loginWhatsAppFallback: 'Merhaba, ServisPilot giriş bilgilerim için yazıyorum.'
+  },
+
   // Ölçüm: ID'leri girince ilgili script otomatik yüklenir.
   analytics: {
     ga4Id: '',      // ör: 'G-XXXXXXXXXX'
