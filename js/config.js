@@ -11,7 +11,7 @@ window.SERVISPILOT_CONFIG = {
   // Randevu takvimi: Cal.com etkinlik bağlantınız (API anahtarı gerektirmez).
   // Değiştirmek için: cal.com panosunda yeni etkinlik açın → linkini buraya yapıştırın.
   calendar: {
-    url: 'https://cal.com/servispilot.com.tr/15min'
+    url: 'https://cal.com/servispilot.com.tr/30min'
   },
 
   // Uygulama / giriş
