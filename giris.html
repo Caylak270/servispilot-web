@@ -19,8 +19,9 @@
       font-family: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
       position: relative; overflow: hidden;
     }
-    /* Hero'daki amber glow dili */
-    .glow { position: absolute; border-radius: 9999px; filter: blur(90px); pointer-events: none; }
+    /* Hero'daki amber glow dili — sarmalayıcı taşmayı kırpır */
+    .bg-decor { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+    .glow { position: absolute; border-radius: 9999px; filter: blur(90px); }
     .glow-1 { width: 420px; height: 420px; background: rgba(245,158,11,.14); top: -140px; right: -100px; }
     .glow-2 { width: 360px; height: 360px; background: rgba(246,96,24,.10); bottom: -140px; left: -100px; }
     .grid-lines { position: absolute; inset: 0; pointer-events: none; opacity: .5;
@@ -88,9 +89,11 @@
   </style>
 </head>
 <body>
-  <div class="glow glow-1"></div>
-  <div class="glow glow-2"></div>
-  <div class="grid-lines"></div>
+  <div class="bg-decor">
+    <div class="glow glow-1"></div>
+    <div class="glow glow-2"></div>
+    <div class="grid-lines"></div>
+  </div>
 
   <main class="card">
     <div class="brand">

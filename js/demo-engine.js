@@ -21,7 +21,7 @@ const DemoEngine = (function () {
 
   // Duvar-saati tabanlı, duraklatılabilir bekleme
   async function wait(g, ms) {
-    const end = Date.now() + ms;
+    let end = Date.now() + ms;
     while (Date.now() < end) {
       if (g !== gen) throw 'cancelled';
       if (paused) {

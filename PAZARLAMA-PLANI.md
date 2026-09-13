@@ -210,7 +210,7 @@ Merkez ofis için GBP aç (kategori: "Yazılım şirketi" + "Bilgisayar destek h
 
 ## 7. Satış Funnel'ı — WhatsApp Süreci
 
-**SLA: Gelen her WhatsApp mesajına < 15 dakikada yanıt.** (Sektör: usta WhatsApp'ta yaşıyor; hız = güven.)
+**SLA (güncellendi — bkz. `SATIS-PLANI.md` bölüm 5):** Operatör hafta içi 11:00-19:00 okulda olduğundan standart: *gündüz gelen mesaja aynı akşam 19:00-22:00 arası dönüş.* WhatsApp Business away mesajı bunu baştan bildirir; site chatbot'u (Pilot Asistan) gündüz ilk hat olarak lead'i nitelendirip toplar.
 
 ### 7.1 İlk yanıt şablonu
 > Merhaba 👋 ServisPilot'a ilgilendiğiniz için teşekkürler! Size en doğru demo için 2 kısa soru: (1) Serviste ayda yaklaşık kaç araç işleniyor? (2) Şu an takibi nasıl yapıyorsunuz — Excel, defter mi, başka program mı?
