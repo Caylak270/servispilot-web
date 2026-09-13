@@ -24,9 +24,16 @@ window.SERVISPILOT_CONFIG = {
   // Pilot Asistan — site içi chatbot (js/chatbot.js). Ücretsizdir, üçüncü
   // taraf hesap gerektirmez. enabled: false → balon tamamen kalkar.
   // showOnMobile: true → mobilde sticky bar üzerinde de gösterilir.
+  // ai: gerçek AI sohbeti — Vercel'de /api/chat fonksiyonu üzerinden çalışır
+  // (anahtarlar Vercel env'inde: ZAI_API_KEY, GROQ_API_KEY).
+  // endpoint boş veya ai.enabled=false → eski anahtar kelime motoruna döner.
   chat: {
     enabled: true,
     assistantName: 'Pilot Asistan',
-    showOnMobile: false
+    showOnMobile: false,
+    ai: {
+      enabled: true,
+      endpoint: '/api/chat'
+    }
   }
 };

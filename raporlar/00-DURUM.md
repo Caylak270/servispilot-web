@@ -25,19 +25,21 @@
 - [x] Hero animasyonları **kullanıcı kararıyla geri alındı** — motion sistemi (reveal + sayaçlar) yerinde kaldı → 19
 - [x] **Yasal sayfa şablonları** (gizlilik.html + kullanim-sartlari.html; `[...]` yer tutuculu) + footer bağlantıları → **16**
 - [x] Chatbot tarayıcıda test edildi (8 senaryo + görsel doğrulama; "yedek" anahtar kelime çakışması düzeltildi) → **16**
+- [x] **Pilot Asistan 2.0 — gerçek AI sohbet** (Vercel serverless proxy: Z.ai birincil + Groq gpt-oss-120b yedek; 3 katmanlı fallback, rate limit, CORS; Groq'un llama-3.3 modeli kalktığı için gpt-oss-120b) → **20**
 
 ## Sıradaki
-1. **Alan adı teyidi** (servispilot.com.tr varsayıldı) → canonical/og:url/JSON-LD/sitemap/robots güncellenir
-2. **Canlı demo linki** (kullanıcı verecek) → kokpit bölümüne gömme; plan 11. raporda
-3. **Karşılaştırma tablosu + ROI hesaplayıcı** (Faz 1.5 — stoaix deseni)
-4. Tailwind CDN → derlenmiş CSS (Faz 0.3)
-5. Yasal sayfaların yer tutucularının doldurulması + avukat kontrolü (şirket bilgisi gerekli)
-6. 21st.dev ile premium görsel yükseltme (Faz 3 — ZCode restart sonrası MCP aktif)
+1. **AI anahtarlarının Vercel'e girilmesi** (kullanıcı): `ZAI_API_KEY` + `GROQ_API_KEY` → Environment Variables → Redeploy; anahtar gelene kadar canlı sitede anahtar kelime motoru çalışır → **20**
+2. **Alan adı teyidi** (servispilot.com.tr varsayıldı) → canonical/og:url/JSON-LD/sitemap/robots güncellenir
+3. **Canlı demo linki** (kullanıcı verecek) → kokpit bölümüne gömme; plan 11. raporda
+4. **Karşılaştırma tablosu + ROI hesaplayıcı** (Faz 1.5 — stoaix deseni)
+5. Tailwind CDN → derlenmiş CSS (Faz 0.3)
+6. Yasal sayfaların yer tutucularının doldurulması + avukat kontrolü (şirket bilgisi gerekli)
 7. Görsellerdeki gerçek müşteri verilerinin test verisiyle yenilenmesi (yayın öncesi)
 
 ## Kullanıcıdan beklenen girdiler
 | Girdi | Nereye | Etkisi |
 |---|---|---|
+| **Z.ai + Groq API anahtarları** (kredi kartı gerekmez) | Vercel → Environment Variables → `ZAI_API_KEY`, `GROQ_API_KEY` | Pilot Asistan gerçek AI'ya geçer |
 | **Alan adı teyidi** (https://www.servispilot.com.tr varsayıldı) | canonical/og:url/JSON-LD/sitemap/robots | SEO adresleri kesinleşir |
 | **Cal.com randevu linki** (sözlendi, sonraki adımda gelecek) | `js/config.js` → `calendar.url` | Modal gerçek takvimi gösterir |
 | GA4 ölçüm ID (G-XXXXXXX) | `js/config.js` → `analytics.ga4Id` | GA4 otomatik yüklenir |

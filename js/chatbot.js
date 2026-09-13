@@ -15,6 +15,18 @@
   const NAME = cfg.assistantName || 'Pilot Asistan';
   const DESKTOP_ONLY = cfg.showOnMobile !== true;
 
+  // AI modu: /api/chat (Vercel serverless) üzerinden gerçek sohbet.
+  // endpoint boş veya ai.enabled=false → eski anahtar kelime motoru.
+  const AI_CFG = cfg.ai || {};
+  const AI_ENABLED = AI_CFG.enabled !== false && !!AI_CFG.endpoint;
+  const AI_ENDPOINT = AI_CFG.endpoint || '/api/chat';
+  let aiHistory = []; // son 10 mesaj {role, content}
+  const TYPING_HTML = '<span class="spchat-typing"><span></span><span></span><span></span></span>';
+
+  function escapeHtml(s) {
+    return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+
   /* ---------------- Bilgi tabanı (SSS + fiyat + funnel) ---------------- */
   const KB = [
     {
@@ -276,14 +288,87 @@
     }, 500 + Math.random() * 500);
   }
 
-  function handleUserText(text) {
-    addMsg(text.replace(/</g, '&lt;'), 'user');
+  function handleUserText(text, fromChip) {
+    addMsg(escapeHtml(text), 'user');
+    // Çipler → güvenilir anahtar motoru (doğru CTA garantili); serbest yazım → AI
+    if (AI_ENABLED && !fromChip) return askAI(text);
+    keywordAnswer(text);
+  }
+
+  function keywordAnswer(text) {
     const entry = findAnswer(text);
     if (entry) botReply(entry.a, entry.cta);
     else botReply(FALLBACK, [
       { label: 'WhatsApp\'tan sor', type: 'whatsapp', msg: 'Merhaba, şunu sormak istiyorum: ' + text },
       { label: 'Görüşme planla', type: 'calendar' }
     ]);
+  }
+
+  /* ---------------- AI sohbet (Pilot Asistan 2.0) ---------------- */
+  function askAI(userText) {
+    const typing = addMsg(TYPING_HTML, 'bot');
+    const ctrl = (typeof AbortController === 'function') ? new AbortController() : null;
+    const timer = setTimeout(function () { if (ctrl) ctrl.abort(); }, 20000);
+
+    fetch(AI_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ messages: aiHistory.concat([{ role: 'user', content: userText }]) }),
+      signal: ctrl ? ctrl.signal : undefined
+    }).then(function (r) {
+      return r.json().then(function (j) { return { ok: r.ok, j: j }; }).catch(function () { return { ok: r.ok, j: null }; });
+    }).then(function (res) {
+      clearTimeout(timer);
+      if (!res.ok || !res.j || !res.j.reply) throw new Error('ai_http_' + (res.j && res.j.error ? res.j.error : 'fail'));
+      renderAI(typing, res.j.reply, userText);
+      aiHistory.push({ role: 'user', content: userText });
+      aiHistory.push({ role: 'assistant', content: stripAiTags(res.j.reply) });
+      if (aiHistory.length > 10) aiHistory = aiHistory.slice(-10);
+      window.track('chat_ai_ok', { provider: res.j.provider || null });
+    }).catch(function (err) {
+      clearTimeout(timer);
+      typing.remove();
+      window.track('chat_ai_fail', { label: String(err && err.message || err).slice(0, 60) });
+      keywordAnswer(userText); // 3. katman: anahtar motor → WhatsApp fallback
+    });
+  }
+
+  function renderAI(el, reply, userText) {
+    const actions = [];
+    let text = String(reply);
+    if (/\[\[\s*WHATSAPP\s*\]\]/i.test(text)) {
+      actions.push({
+        label: "WhatsApp'tan yaz", type: 'whatsapp',
+        msg: 'Merhaba, Pilot Asistan ile görüşüyordum.' + (userText ? ' Şunu sormuştum: ' + userText : '')
+      });
+      text = text.replace(/\[\[\s*WHATSAPP\s*\]\]/gi, '');
+    }
+    if (/\[\[\s*TAKVIM\s*\]\]/i.test(text)) {
+      actions.push({ label: 'Görüşme planla', type: 'calendar' });
+      text = text.replace(/\[\[\s*TAKVIM\s*\]\]/gi, '');
+    }
+    // Funnel güvencesi: AI etiket koymadıysa bile her cevapta WhatsApp yolu açık kalsın
+    if (!actions.length) {
+      actions.push({
+        label: "WhatsApp'tan devam et", type: 'whatsapp',
+        msg: 'Merhaba, Pilot Asistan ile görüşüyordum.' + (userText ? ' Şunu sormuştum: ' + userText : '')
+      });
+    }
+    el.innerHTML = aiHtml(text);
+    addCtas(el, actions);
+    scrollBottom();
+    window.track('chat_bot_reply', { label: el.textContent.trim().slice(0, 60) });
+  }
+
+  function aiHtml(text) {
+    let t = escapeHtml(text);
+    t = t.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+    t = t.replace(/\r?\n/g, '<br>');
+    return t.trim();
+  }
+
+  function stripAiTags(s) {
+    return String(s).replace(/\[\[.*?\]\]/g, '').replace(/\*\*/g, '').replace(/\s+/g, ' ').trim().slice(0, 500);
   }
 
   function openPanel() {
@@ -324,7 +409,7 @@
         '<input class="spchat-input" type="text" placeholder="Sorunuzu yazın…" maxlength="200">' +
         '<button class="spchat-send" aria-label="Gönder"><svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg></button>' +
       '</div>' +
-      '<div class="spchat-kvkk">Sohbet verileriniz KVKK kapsamında işlenir. <a href="gizlilik.html">Gizlilik Politikası</a></div>' +
+      '<div class="spchat-kvkk">Sohbetler yapay zekâ desteğiyle yanıtlanır; verileriniz KVKK kapsamında işlenir. <a href="gizlilik.html">Gizlilik Politikası</a></div>' +
     '</div>';
   document.body.appendChild(root);
 
@@ -347,7 +432,7 @@
   root.querySelector('.spchat-send').addEventListener('click', submit);
 
   Array.prototype.forEach.call(root.querySelectorAll('.spchat-chip'), function (chip) {
-    chip.addEventListener('click', function () { handleUserText(chip.textContent); });
+    chip.addEventListener('click', function () { handleUserText(chip.textContent, true); });
   });
 
   // Teaser: kullanıcı 9 sn içinde açmazsa nazik bir davet göster (tek seferlik)
