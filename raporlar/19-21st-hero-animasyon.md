@@ -1,5 +1,6 @@
 # 19 — 21st.dev ile Hero Animasyonları
-> Tarih: 2026-09-13 · Durum: ✅ Tamamlandı · Kaynak: 21st.dev bileşen #2733 (Dynamic Animated Hero Section)
+> Tarih: 2026-09-13 · Durum: ⛔ **GERİ ALINDI** (kullanıcı beğenmedi — 2026-09-13)
+> İleride plana göre yeniden tasarlanacak; bu rapor teknik referans olarak kalır.
 
 ## 21st.dev MCP bağlandı
 - `.zcode/config.json` çalışıyor; sunucu "21st" v0.1.1 doğrulandı

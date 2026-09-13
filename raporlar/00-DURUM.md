@@ -22,6 +22,7 @@
 - [x] **sitemap.xml + robots.txt** → **16**
 - [x] **Yeni S°P monogram logosu** (şeffaf header PNG + favicon + OG kartı; eski logo.jpg kaldırıldı) → **17**
 - [x] **21st.dev MCP bağlandı** + hero animasyonları (gradyan döngüsü, SVG çizim, desen kaydırma, CTA pulse — bileşen #2733 uyarlaması) → **19**
+- [x] Hero animasyonları **kullanıcı kararıyla geri alındı** — motion sistemi (reveal + sayaçlar) yerinde kaldı → 19
 - [x] **Yasal sayfa şablonları** (gizlilik.html + kullanim-sartlari.html; `[...]` yer tutuculu) + footer bağlantıları → **16**
 - [x] Chatbot tarayıcıda test edildi (8 senaryo + görsel doğrulama; "yedek" anahtar kelime çakışması düzeltildi) → **16**
 
