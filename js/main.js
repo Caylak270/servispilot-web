@@ -96,13 +96,9 @@ function issueSimInvoice() {
 function toggleFaq(id) {
   const body = document.getElementById(id);
   const icon = document.getElementById(id + '-icon');
-  if (body.classList.contains('hidden')) {
-    body.classList.remove('hidden');
-    icon.innerText = 'expand_less';
-  } else {
-    body.classList.add('hidden');
-    icon.innerText = 'expand_more';
-  }
+  if (!body) return;
+  const open = body.classList.toggle('open');
+  if (icon) icon.innerText = open ? 'expand_less' : 'expand_more';
 }
 
 // ============================================================

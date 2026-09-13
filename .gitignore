@@ -13,3 +13,6 @@ Desktop.ini
 # Geçici
 _tmp/
 kokpit-*.html
+
+# Harici skill klonlari (gomulu git depolari — repoya ait degil)
+tools/skill-repos/

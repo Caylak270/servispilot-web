@@ -136,3 +136,12 @@ document.querySelectorAll('.spot-card').forEach((card) => {
     card.style.setProperty('--my', (e.clientY - r.top) + 'px');
   });
 });
+
+// Header scroll golgesi
+(function () {
+  const header = document.querySelector('header');
+  if (!header) return;
+  const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 8);
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+})();

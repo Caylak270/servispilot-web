@@ -55,6 +55,26 @@
     #calendar-modal.open .modal-shell { transform: none; opacity: 1; }
     .pop { animation: numberPop 320ms cubic-bezier(0.34, 1.45, 0.64, 1); }
     @keyframes numberPop { 0% { opacity: .35; transform: translateY(4px); filter: blur(1px); } 100% { opacity: 1; transform: none; filter: blur(0); } }
+    /* Yumusak scroll (anchor) */
+    @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+    /* Focus gorunurlugu */
+    :focus-visible { outline: 2px solid #E8930C; outline-offset: 2px; border-radius: 6px; }
+    /* Marquee/ticker kenar fade */
+    .marquee-wrap, .ticker-wrap { -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent); mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent); }
+    /* SSS yumusak akordiyon */
+    .faq-body { overflow: hidden; max-height: 0; transition: max-height 340ms cubic-bezier(0.22, 1, 0.36, 1); }
+    .faq-body.open { max-height: 420px; }
+    /* Kart ikon mikro-animasyonu */
+    .icon-box { transition: background-color 320ms cubic-bezier(0.22, 1, 0.36, 1), color 320ms cubic-bezier(0.22, 1, 0.36, 1); }
+    .spot-card:hover .icon-box { background-color: #E8930C; color: #fff; }
+    .spot-card h3 { transition: color 320ms cubic-bezier(0.22, 1, 0.36, 1); }
+    .spot-card:hover h3 { color: #B45309; }
+    /* CTA shine sweep */
+    .cta-shine { position: relative; overflow: hidden; }
+    .cta-shine::after { content: ""; position: absolute; top: 0; left: -80%; width: 45%; height: 100%; background: linear-gradient(100deg, transparent, rgba(255,255,255,0.35), transparent); transform: skewX(-20deg); transition: left 600ms cubic-bezier(0.22, 1, 0.36, 1); pointer-events: none; }
+    .cta-shine:hover::after { left: 135%; }
+    /* Header scroll golgesi */
+    header.scrolled { box-shadow: 0 10px 30px -14px rgba(14, 27, 44, 0.22); }
     @media (prefers-reduced-motion: reduce) { .lift:hover { transform: none; } [data-press]:active { transform: none; } .pop, #calendar-modal .modal-shell { animation: none; transition: none; } }
     @keyframes demoScan { 0% { top: 0; } 100% { top: calc(100% - 2px); } }
     .qr-scanline { position: absolute; left: 4px; right: 4px; height: 2px; background: #ffc174; box-shadow: 0 0 12px 2px rgba(255,193,116,.8); animation: demoScan 1.1s linear infinite; z-index: 5; }
@@ -335,7 +355,7 @@
               Ruhsat OCR, QR stok, WhatsApp onayı ve e-Fatura tek sistemde. Anahtar teslim alın — kurulumu ve ayarları biz yaparız.
             </p>
             <div data-motion data-delay="240" class="mt-8 flex flex-col sm:flex-row gap-3">
-              <a class="cta-pulse inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-gradient-to-r from-primary-container to-secondary-container text-white font-label-md text-label-md font-bold transition-all" data-track="whatsapp_click" data-press data-location="hero" href="https://wa.me/905309929505?text=Merhaba%2C%20ServisPilot%27un%2014%20g%C3%BCnl%C3%BCk%20%C3%BCcretsiz%20denemesini%20ba%C5%9Flatmak%20istiyorum." target="_blank" rel="noopener">
+              <a class="cta-shine cta-pulse inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-gradient-to-r from-primary-container to-secondary-container text-white font-label-md text-label-md font-bold transition-all" data-track="whatsapp_click" data-press data-location="hero" href="https://wa.me/905309929505?text=Merhaba%2C%20ServisPilot%27un%2014%20g%C3%BCnl%C3%BCk%20%C3%BCcretsiz%20denemesini%20ba%C5%9Flatmak%20istiyorum." target="_blank" rel="noopener">
                 <span class="material-symbols-outlined text-base">chat</span>
                 WhatsApp'tan Başla
               </a>
@@ -676,7 +696,7 @@
           <div data-motion-group data-stagger="70" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <div class="spot-card lift p-7 rounded-2xl bg-surface-card border border-surface-container-high/50 hover:border-primary/40 hover:bg-surface-card-elevated shadow-lg transition-all flex flex-col justify-between group">
               <div>
-                <div class="w-12 h-12 rounded-xl bg-primary-container/10 flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform">
+                <div class="icon-box w-12 h-12 rounded-xl bg-primary-container/10 flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform">
                   <span class="material-symbols-outlined text-2xl">document_scanner</span>
                 </div>
                 <h3 class="font-headline-sm text-headline-sm text-text-primary mb-3">Tesseract AI Ruhsat OCR</h3>
@@ -689,7 +709,7 @@
             </div>
             <div class="spot-card lift p-7 rounded-2xl bg-surface-card border border-surface-container-high/50 hover:border-secondary-container/40 hover:bg-surface-card-elevated shadow-lg transition-all flex flex-col justify-between group">
               <div>
-                <div class="w-12 h-12 rounded-xl bg-secondary-container/10 flex items-center justify-center text-secondary-container mb-6 group-hover:scale-110 transition-transform">
+                <div class="icon-box w-12 h-12 rounded-xl bg-secondary-container/10 flex items-center justify-center text-secondary-container mb-6 group-hover:scale-110 transition-transform">
                   <span class="material-symbols-outlined text-2xl">touch_app</span>
                 </div>
                 <h3 class="font-headline-sm text-headline-sm text-text-primary mb-3">Tek Dokunuş Usta Kokpiti</h3>
@@ -702,7 +722,7 @@
             </div>
             <div class="spot-card lift p-7 rounded-2xl bg-surface-card border border-surface-container-high/50 hover:border-primary/40 hover:bg-surface-card-elevated shadow-lg transition-all flex flex-col justify-between group">
               <div>
-                <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform">
+                <div class="icon-box w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform">
                   <span class="material-symbols-outlined text-2xl">photo_camera</span>
                 </div>
                 <h3 class="font-headline-sm text-headline-sm text-text-primary mb-3">4 Açı Görsel Kanıt &amp; Arşiv</h3>
@@ -715,7 +735,7 @@
             </div>
             <div class="spot-card lift p-7 rounded-2xl bg-surface-card border border-surface-container-high/50 hover:border-primary/40 hover:bg-surface-card-elevated shadow-lg transition-all flex flex-col justify-between group">
               <div>
-                <div class="w-12 h-12 rounded-xl bg-primary-container/10 flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform">
+                <div class="icon-box w-12 h-12 rounded-xl bg-primary-container/10 flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform">
                   <span class="material-symbols-outlined text-2xl">qr_code_scanner</span>
                 </div>
                 <h3 class="font-headline-sm text-headline-sm text-text-primary mb-3">QR Fiziksel Parça &amp; Raf</h3>
@@ -728,7 +748,7 @@
             </div>
             <div class="spot-card lift p-7 rounded-2xl bg-surface-card border border-surface-container-high/50 hover:border-green-500/40 hover:bg-surface-card-elevated shadow-lg transition-all flex flex-col justify-between group">
               <div>
-                <div class="w-12 h-12 rounded-xl bg-green-500/10 flex items-center justify-center text-green-700 mb-6 group-hover:scale-110 transition-transform">
+                <div class="icon-box w-12 h-12 rounded-xl bg-green-500/10 flex items-center justify-center text-green-700 mb-6 group-hover:scale-110 transition-transform">
                   <span class="material-symbols-outlined text-2xl">chat</span>
                 </div>
                 <h3 class="font-headline-sm text-headline-sm text-text-primary mb-3">Müşteri WhatsApp Portalı</h3>
@@ -741,7 +761,7 @@
             </div>
             <div class="spot-card lift p-7 rounded-2xl bg-surface-card border border-surface-container-high/50 hover:border-primary/40 hover:bg-surface-card-elevated shadow-lg transition-all flex flex-col justify-between group">
               <div>
-                <div class="w-12 h-12 rounded-xl bg-primary-container/20 flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform">
+                <div class="icon-box w-12 h-12 rounded-xl bg-primary-container/20 flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform">
                   <span class="material-symbols-outlined text-2xl">receipt_long</span>
                 </div>
                 <h3 class="font-headline-sm text-headline-sm text-text-primary mb-3">Yerleşik GİB E-Fatura</h3>
@@ -1142,9 +1162,9 @@
                 <span class="font-label-md text-label-md text-text-primary font-semibold">Ustalarım bilgisayara alışkın değil, kullanabilir mi?</span>
                 <span class="material-symbols-outlined text-primary transition-transform" id="faq-1-icon">expand_more</span>
               </button>
-              <div class="hidden px-5 pb-5 text-text-secondary font-body-md text-body-md border-t border-surface-container-high/40 pt-3" id="faq-1">
+              <div class="faq-body" id="faq-1"><div class="px-5 pb-5 pt-1 text-text-secondary font-body-md text-body-md border-t border-surface-container-high/40">
                 Kesinlikle evet. ServisPilot, bilgisayar kullanmayı bilmeyen ustalar düşünülerek tasarlandı. "Usta Kokpiti" modunda sadece 4 adet büyük, renkli ve net buton bulunur. Okuma-yazma ve temel telefon kullanımı yeterlidir.
-              </div>
+              </div></div>
             </div>
             <!-- Accordion 2 -->
             <div class="rounded-xl bg-surface-card overflow-hidden">
@@ -1152,9 +1172,9 @@
                 <span class="font-label-md text-label-md text-text-primary font-semibold">Mevcut müşteri ve parça kayıtlarımızı aktarabilir miyiz?</span>
                 <span class="material-symbols-outlined text-primary transition-transform" id="faq-2-icon">expand_more</span>
               </button>
-              <div class="hidden px-5 pb-5 text-text-secondary font-body-md text-body-md border-t border-surface-container-high/40 pt-3" id="faq-2">
+              <div class="faq-body" id="faq-2"><div class="px-5 pb-5 pt-1 text-text-secondary font-body-md text-body-md border-t border-surface-container-high/40">
                 Evet. Excel veya CSV formatındaki tüm eski müşteri listenizi, cari bakiyelerinizi ve parça stoklarınızı teknik ekibimiz 15 dakika içinde ServisPilot'a eksiksiz aktarır. Hiçbir veri kaybı yaşamazsınız.
-              </div>
+              </div></div>
             </div>
             <!-- Accordion 3 -->
             <div class="rounded-xl bg-surface-card overflow-hidden">
@@ -1162,9 +1182,9 @@
                 <span class="font-label-md text-label-md text-text-primary font-semibold">GİB E-Fatura için ek entegratör ücreti öder miyim?</span>
                 <span class="material-symbols-outlined text-primary transition-transform" id="faq-3-icon">expand_more</span>
               </button>
-              <div class="hidden px-5 pb-5 text-text-secondary font-body-md text-body-md border-t border-surface-container-high/40 pt-3" id="faq-3">
+              <div class="faq-body" id="faq-3"><div class="px-5 pb-5 pt-1 text-text-secondary font-body-md text-body-md border-t border-surface-container-high/40">
                 Hayır. ServisPilot yerleşik Gelir İdaresi Başkanlığı (GİB) E-Arşiv / E-Fatura altyapısıyla entegredir. Dışarıdaki pahalı üçüncü taraf entegratör yazılımlarına ayrıca lisans veya aracı ücreti ödemezsiniz.
-              </div>
+              </div></div>
             </div>
             <!-- Accordion 4 -->
             <div class="rounded-xl bg-surface-card overflow-hidden">
@@ -1172,9 +1192,9 @@
                 <span class="font-label-md text-label-md text-text-primary font-semibold">Verilerimiz güvende mi ve yedekleniyor mu?</span>
                 <span class="material-symbols-outlined text-primary transition-transform" id="faq-4-icon">expand_more</span>
               </button>
-              <div class="hidden px-5 pb-5 text-text-secondary font-body-md text-body-md border-t border-surface-container-high/40 pt-3" id="faq-4">
+              <div class="faq-body" id="faq-4"><div class="px-5 pb-5 pt-1 text-text-secondary font-body-md text-body-md border-t border-surface-container-high/40">
                 Tüm verileriniz ISO 27001 ve KVKK uyumlu Türkiye merkezli sunucularda 256-bit SSL şifreleme ile barındırılır. Günlük otomatik çift yedekleme sayesinde cihazınız çalınsa veya bozulsa dahi hiçbir bilginiz silinmez.
-              </div>
+              </div></div>
             </div>
           </div>
         </div>
