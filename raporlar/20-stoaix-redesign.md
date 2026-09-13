@@ -35,3 +35,10 @@
 
 ## Test notu
 `?v=stoaix3` + Ctrl+F5.
+
+## Ek — Renk uyumu pass (aynı gün, commit `b71f693`)
+Kullanıcı geri bildirimi: krem + lacivert + amber üçlüsü uyumsuz, ayrıca stoaix'e fazla benzer. Düzeltme:
+- Gövde kremden çıkarılıp **soğuk açık griye** geçti (`#F4F6F9` ailesi) — lacivertle aynı sıcaklık ailesi
+- Kenarlıklar/çizgiler soğuk grileşti (`#E1E7EE`)
+- **Amber tek aksan olarak sınırlandı:** CTA gradyanı, ROI rakamları ve logo dışında amber kaldırıldı; eyebrow pill'leri lacivert tona, marquee ikonları lacivert-griye, ticker "YENİ" etiketi lacivert hap'a çevrildi
+- Sonuç palet: lacivert + soğuk beyaz/gri + tek amber vurgu (stoaix'ten ayrışan nokta: sıcak amber aksan)
