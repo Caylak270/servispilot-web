@@ -38,7 +38,7 @@ Kural: **içerik, reklam veya satış işi yapılmadan önce ilgili raporun gün
 2. Meta modeli: video + WhatsApp CTA (Automasyon 461 gün kanıtı); Instagram organik içerik ikincil
 3. Reklam bütçesi 10-20K ₺/ay bandı; dağılım `PAZARLAMA-PLANI.md` 8b
 4. Kullanıcı okulda: hafta içi 11-19 yok — SLA "aynı akşam 19:00-22:00", otomatik görevler gündüzü kapatır
-5. Apify token (aktif): `apify_api_amNfzd77wAvyVEgOAcsNGQRTJvVP8n4bANXm` · SerpApi: kullanıcıda mevcut
+5. Apify token (aktif): `APIFY_TOKEN_BURAYA(research/.apify_token dosyasindan oku)` · SerpApi: kullanıcıda mevcut
 6. Bu proje asla GENERIC template içerik üretmez: her içerik kanca mesajlardan birini kullanır (PAZARLAMA-PLANI.md 2.3)
 7. **DataForSEO** kurulu: 15 `/seo-*` skill'i (`~/.zcode/skills/seo-*`), paylaşılan istemci `~/.claude/skills/seo/` (scripts + `.env`). Kimlik bilgileri `.env`'de; varsayılan: konum=Turkey, dil=tr. Kullanım: `/seo keywords <kelime>`, `/seo quick <domain>`, `/seo audit <domain>`, `/seo competitors <domain>`. Kullandı-öde modeli — büyük sorgulardan önce kullanıcıya maliyet hatırlat. Hesap doğrulaması gerekli (40104) — kullanıcı app.dataforseo.com'da doğrulayınca çalışır.
 8. **Semrush/Ahrefs aboneliği ALINMAZ** (şu aşamada). Kelime hacmi için ücretsiz zincir: **Google Keyword Planner** (Ads hesabıyla — hafta 0'da zaten açılacak) + Google Trends (göreli karşılaştırma) + GSC (site canlıyken gerçek veri) + autocomplete/related searches (tamamlandı: `research/keyword_autocomplete.json`, 120 kelime). DataForSEO kurulu kaldı = kullandı-öde yedek (sorgu başı kuruşlar; doğrulama sorunu çözülürse kullanılabilir, zorunlu değil).
