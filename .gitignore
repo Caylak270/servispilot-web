@@ -18,3 +18,4 @@ kokpit-*.html
 tools/skill-repos/
 node_modules/
 gui-test-screenshots/
+research/.apify_token
