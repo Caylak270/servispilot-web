@@ -2,4 +2,14 @@
 User-agent: *
 Allow: /
 
+# AI arama motorlari (GEO) — acik davet
+User-agent: GPTBot
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+User-agent: Google-Extended
+Allow: /
+
 Sitemap: https://www.servispilot.com.tr/sitemap.xml

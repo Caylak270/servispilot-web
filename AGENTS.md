@@ -40,6 +40,8 @@ Kural: **içerik, reklam veya satış işi yapılmadan önce ilgili raporun gün
 4. Kullanıcı okulda: hafta içi 11-19 yok — SLA "aynı akşam 19:00-22:00", otomatik görevler gündüzü kapatır
 5. Apify token (aktif): `apify_api_amNfzd77wAvyVEgOAcsNGQRTJvVP8n4bANXm` · SerpApi: kullanıcıda mevcut
 6. Bu proje asla GENERIC template içerik üretmez: her içerik kanca mesajlardan birini kullanır (PAZARLAMA-PLANI.md 2.3)
+7. **DataForSEO** kurulu: 15 `/seo-*` skill'i (`~/.zcode/skills/seo-*`), paylaşılan istemci `~/.claude/skills/seo/` (scripts + `.env`). Kimlik bilgileri `.env`'de; varsayılan: konum=Turkey, dil=tr. Kullanım: `/seo keywords <kelime>`, `/seo quick <domain>`, `/seo audit <domain>`, `/seo competitors <domain>`. Kullandı-öde modeli — büyük sorgulardan önce kullanıcıya maliyet hatırlat. Hesap doğrulaması gerekli (40104) — kullanıcı app.dataforseo.com'da doğrulayınca çalışır.
+8. **Semrush/Ahrefs aboneliği ALINMAZ** (şu aşamada). Kelime hacmi için ücretsiz zincir: **Google Keyword Planner** (Ads hesabıyla — hafta 0'da zaten açılacak) + Google Trends (göreli karşılaştırma) + GSC (site canlıyken gerçek veri) + autocomplete/related searches (tamamlandı: `research/keyword_autocomplete.json`, 120 kelime). DataForSEO kurulu kaldı = kullandı-öde yedek (sorgu başı kuruşlar; doğrulama sorunu çözülürse kullanılabilir, zorunlu değil).
 
 ## Bekleyen işler (güncel tut)
 
@@ -48,4 +50,5 @@ Kural: **içerik, reklam veya satış işi yapılmadan önce ilgili raporun gün
 - [ ] Gençler Oto kapanışı (bkz. SATIS-PLANI.md bölüm 1)
 - [ ] Tailwind CDN → derlenmiş CSS + meta description kısaltma (bkz. teknik-seo-denetim)
 - [ ] 3 zamanlanmış otomasyon teklifi (SATIS-PLANI.md bölüm 7 — onay bekliyor)
+- [ ] DataForSEO hesap doğrulaması (app.dataforseo.com → sonra `keyword_research.py volume "oto servis programı"` ile tekrar test)
 - [ ] İlk pillar yazı: "Oto Servis Muhasebe Programı: Eksiksiz Rehber (2026)"

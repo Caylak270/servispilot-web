@@ -1,0 +1,10 @@
+{
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "servispilot.com.tr" }],
+      "destination": "https://www.servispilot.com.tr/:path*",
+      "permanent": true
+    }
+  ]
+}

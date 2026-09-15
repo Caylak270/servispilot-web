@@ -1,0 +1,21 @@
+# ServisPilot
+
+> ServisPilot, Türkiye'deki özel oto servisleri için bulut tabanlı bir işletme programıdır. Servis iş akışı (ruhsat OCR ile iş emri, QR parça stok takibi, WhatsApp müşteri onayı) ve muhasebe (cari, kasa, GİB E-Fatura/E-Arşiv) tek pakette sunulur. Kurulum ücretsiz ekip tarafından yapılır; 14 gün kredi kartısız deneme vardır.
+
+## Temel bilgiler
+- Ürün: Bulut tabanlı oto servis yönetim + muhasebe yazılımı
+- Hedef kitle: Türkiye'deki bağımsız/özel oto servisleri, tamirhaneler
+- Fiyat: Aylık 2.399 ₺ | 6 aylık 1.899 ₺/ay | Yıllık 1.599 ₺/ay (ilk 50 servise sabit fiyat kampanyası)
+- Deneme: 14 gün, kredi kartı gerekmez
+- Satış/destek: WhatsApp +90 530 992 95 05
+
+## Öne çıkan yetenekler
+- Ruhsat OCR: plakanın okutulmasıyla iş emri açılır
+- QR parça stok: fiziksel raf ve parça takibi
+- WhatsApp müşteri onayı: onarım onayı ve görsel kanıt paylaşımı
+- Yerleşik GİB E-Fatura/E-Arşiv: aracı yazılım ücreti olmadan faturalama
+
+## Sayfalar
+- Ana sayfa: https://www.servispilot.com.tr/
+- Fiyatlandırma: https://www.servispilot.com.tr/#fiyatlandirma
+- Özellikler: https://www.servispilot.com.tr/#ozellikler
