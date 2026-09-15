@@ -140,7 +140,7 @@ const DemoEngine = (function () {
 
     await wait(g, 700);
     await typeInto(g, 'plate-display', '34 SP 911', 70);
-    badge.className = 'px-2.5 py-1 rounded-full bg-green-500/10 border border-green-500/20 text-green-400 font-label-sm text-xs flex items-center gap-1.5';
+    badge.className = 'px-2.5 py-1 rounded-full bg-green-500/10 border border-green-500/20 text-green-700 font-label-sm text-xs flex items-center gap-1.5';
     badge.innerHTML = '<span class="w-1.5 h-1.5 rounded-full bg-green-400"></span>Ruhsat okundu ✓ %99.8 güven';
     showToast('Ruhsat OCR tamamlandı — 4 saniye');
     await wait(g, 350);
@@ -226,7 +226,7 @@ const DemoEngine = (function () {
     addChat(g, chatHTML('in', 'Elinize sağlık, onaylıyorum 👍', '14:21'));
     await wait(g, 900);
     addChat(g, chatHTML('out', 'Fatura özetiniz onayınıza sunulmuştur: <span class="underline text-emerald-300">onay.servispilot.com.tr/b81f</span>', '14:22'));
-    status.className = 'px-2 py-0.5 rounded-full bg-green-500/10 text-green-400 font-label-sm text-[10px] font-bold';
+    status.className = 'px-2 py-0.5 rounded-full bg-green-500/10 text-green-700 font-label-sm text-[10px] font-bold';
     status.textContent = 'Onaylandı ✓ 14:22';
     await wait(g, 900);
 
@@ -234,7 +234,7 @@ const DemoEngine = (function () {
     gibBtn.innerHTML = '<span class="material-symbols-outlined text-sm animate-spin">progress_activity</span> GİB\u0027e gönderiliyor…';
     await wait(g, 1200);
     gibDurum.textContent = 'GİB Onayladı (E-Arşiv Kesildi)';
-    gibDurum.className = 'text-green-400 font-bold';
+    gibDurum.className = 'text-green-700 font-bold';
     gibBtn.innerHTML = '<span class="material-symbols-outlined text-sm">check</span> GİB E-Faturası Kesildi ✓';
     if (stamp) stamp.classList.add('show');
     showToast('Tahsilat cariye işlendi — günlük ciro ₺56.138 ✓', 4200);

@@ -16,3 +16,5 @@ kokpit-*.html
 
 # Harici skill klonlari (gomulu git depolari — repoya ait degil)
 tools/skill-repos/
+node_modules/
+gui-test-screenshots/

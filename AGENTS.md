@@ -52,3 +52,9 @@ Kural: **içerik, reklam veya satış işi yapılmadan önce ilgili raporun gün
 - [ ] 3 zamanlanmış otomasyon teklifi (SATIS-PLANI.md bölüm 7 — onay bekliyor)
 - [ ] DataForSEO hesap doğrulaması (app.dataforseo.com → sonra `keyword_research.py volume "oto servis programı"` ile tekrar test)
 - [ ] İlk pillar yazı: "Oto Servis Muhasebe Programı: Eksiksiz Rehber (2026)"
+
+## Çoklu oturum koordinasyonu
+
+- **PageSpeed/Tailwind migrasyonu başka bir ZCode oturumunda sürüyor** → `css/`, `tailwind.config.js`, `package.json`, `package-lock.json` dosyaları o oturumun WIP'i; **bu oturum BUNLARA DOKUNMAZ** (commit/modify yok).
+- Deploy kuralı: SEO/icerik tarafında commit+push bu oturumda; PageSpeed tarafında build dosyaları diğer oturumda. Aynı dosyaya iki taraf birden yazmaz.
+- UYARI (15 Eyl): commit 082bfcf GitHub'a pushlandı ama canlı site güncellenmedi → Vercel deploy tetiklenmiyor olabilir; Vercel panelinden Deployments durumu ve Settings→Git bağlantısı doğrulanmalı. GSC doğrulama dosyası (`googleb0bdccb8b7bb207e.html`) deploy edilmeden GSC doğrulaması yapılamaz.

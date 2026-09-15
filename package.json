@@ -1,0 +1,11 @@
+{
+  "name": "servispilot-web",
+  "private": true,
+  "description": "Statik site — Tailwind derlemesi icin (npm run build:css)",
+  "scripts": { "build:css": "tailwindcss -i css/input.css -o css/tailwind.min.css --minify" },
+  "devDependencies": {
+    "tailwindcss": "3.4.17",
+    "@tailwindcss/forms": "^0.5.10",
+    "@tailwindcss/container-queries": "^0.1.1"
+  }
+}

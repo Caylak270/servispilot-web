@@ -12,11 +12,12 @@
   <meta property="og:image" content="https://www.servispilot.com.tr/assets/og-logo.jpg">
   <meta name="twitter:image" content="https://www.servispilot.com.tr/assets/og-logo.jpg">
   <meta name="twitter:card" content="summary">
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"></noscript>
+  <!-- Material Symbols: yalniz kullanilan 66 ikonun subset'i (tam font 1.100 KB -> ~9 KB) -->
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&amp;icon_names=account_balance_wallet,add_a_photo,add_circle,arrow_forward,auto_awesome,autorenew,badge,bar_chart,bolt,calendar_month,call,car_repair,chat,check,check_circle,close,cloud_done,cloud_upload,credit_card,credit_card_off,description,directions_car,dns,document_scanner,electric_bolt,engineering,event,event_available,event_busy,expand_less,expand_more,forum,front_loader,grid_on,inventory_2,local_fire_department,local_offer,local_shipping,lock,mail,map,mic,more_vert,notifications_active,pan_tool,person,photo_camera,play_arrow,play_pause,progress_activity,qr_code_2,qr_code_scanner,receipt,receipt_long,rocket_launch,savings,send,sentiment_satisfied,settings_backup_restore,sms,star,task_alt,tire_repair,touch_app,verified,verified_user&amp;display=block" rel="stylesheet">
   <style>
     @layer base {
       html, body { margin: 0; padding: 0; }
@@ -88,133 +89,7 @@
     .typing-dots span:nth-child(3) { animation-delay: .3s; }
     @keyframes typingBounce { 0%, 60%, 100% { transform: translateY(0); opacity: .5; } 30% { transform: translateY(-4px); opacity: 1; } }
   </style>
-  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-  <script id="tailwind-config">
-    tailwind.config = {
-      darkMode: "class",
-      theme: {
-        extend: {
-          colors: {
-            "paper": "#F4F6F9",
-            "card": "#FFFFFF",
-            "navy": "#0E1B2C",
-            "navy-2": "#13223A",
-            "ink": "#16202E",
-            "ink-soft": "#3D4A5A",
-            "muted": "#5B6B7C",
-            "line": "#E1E7EE",
-            "accent": "#E8930C",
-            "accent-soft": "#FFC174",
-            "accent-deep": "#B45309",
-            "green-ok": "#1B8A4B",
-            "surface-base": "#F4F6F9",
-            "surface": "#F4F6F9",
-            "surface-card": "#FFFFFF",
-            "surface-card-elevated": "#FFFFFF",
-            "surface-container-lowest": "#F7F9FC",
-            "surface-container-low": "#EEF1F5",
-            "surface-container": "#E7EBF1",
-            "surface-container-high": "#DFE5EC",
-            "surface-container-highest": "#D3DBE4",
-            "surface-bright": "#FFFFFF",
-            "background": "#F4F6F9",
-            "surface-dim": "#EDE8DD",
-            "surface-variant": "#F7F9FC",
-            "text-primary": "#16202E",
-            "on-surface": "#1C2733",
-            "on-surface-variant": "#64748B",
-            "text-secondary": "#5B6B7C",
-            "text-muted": "#77828E",
-            "on-tertiary-fixed-variant": "#5c4300",
-            "on-error-container": "#410E0B",
-            "secondary-fixed": "#ffdbce",
-            "secondary-container": "#f66018",
-            "tertiary-container": "#e0a800",
-            "on-secondary": "#ffffff",
-            "on-secondary-container": "#ffffff",
-            "secondary-fixed-dim": "#ffb599",
-            "tertiary-fixed": "#ffdf9f",
-            "inverse-primary": "#855300",
-            "primary": "#E8930C",
-            "primary-container": "#f59e0b",
-            "primary-fixed": "#FFC174",
-            "primary-fixed-dim": "#f59e0b",
-            "on-primary": "#472A00",
-            "on-primary-container": "#472A00",
-            "on-primary-fixed": "#472A00",
-            "on-primary-fixed-variant": "#472A00",
-            "error": "#B3261E",
-            "on-error": "#FFFFFF",
-            "error-container": "#F9DEDC",
-            "outline": "#9AA4AF",
-            "outline-variant": "#C9C2B2",
-            "border-subtle": "rgba(22, 32, 46, 0.08)",
-            "glow-amber": "rgba(232, 147, 12, 0.12)",
-            "tertiary": "#ffc32d",
-            "tertiary-fixed": "#ffdf9f",
-            "tertiary-fixed-dim": "#f9bd22",
-            "on-tertiary": "#402d00",
-            "on-tertiary-container": "#584000",
-            "on-tertiary-fixed": "#261a00",
-            "on-tertiary-fixed-variant": "#5c4300",
-            "inverse-surface": "#16202E",
-            "inverse-on-surface": "#F4F6F9",
-            "secondary-fixed": "#ffdbce",
-            "on-secondary-fixed": "#ffffff",
-            "on-secondary-fixed-variant": "#ffffff",
-            "surface-variant": "#F7F9FC"
-          },
-          borderRadius: {
-            "DEFAULT": "0.25rem",
-            "lg": "0.5rem",
-            "xl": "0.75rem",
-            "full": "9999px"
-          },
-          spacing: {
-            "space-md": "1rem",
-            "gutter-mobile": "1rem",
-            "space-xs": "0.25rem",
-            "space-lg": "1.5rem",
-            "space-2xl": "4rem",
-            "margin-mobile": "1.25rem",
-            "space-sm": "0.5rem",
-            "gutter": "1.5rem",
-            "space-xl": "2.5rem",
-            "space-3xl": "6rem",
-            "margin": "3rem"
-          },
-          fontFamily: {
-            "label-md": ["Plus Jakarta Sans"],
-            "headline-sm": ["Plus Jakarta Sans"],
-            "code-metric": ["Space Grotesk", "Plus Jakarta Sans", "sans-serif"],
-            "body-lg": ["Plus Jakarta Sans"],
-            "headline-lg": ["Plus Jakarta Sans"],
-            "label-sm": ["Plus Jakarta Sans"],
-            "body-sm": ["Plus Jakarta Sans"],
-            "body-md": ["Plus Jakarta Sans"],
-            "display": ["Plus Jakarta Sans"],
-            "display-mobile": ["Plus Jakarta Sans"],
-            "headline-lg-mobile": ["Plus Jakarta Sans"],
-            "headline-md": ["Plus Jakarta Sans"]
-          },
-          fontSize: {
-            "label-md": ["0.875rem", { "lineHeight": "1.25rem", "letterSpacing": "0.01em", "fontWeight": "600" }],
-            "headline-sm": ["1.25rem", { "lineHeight": "1.75rem", "letterSpacing": "-0.015em", "fontWeight": "600" }],
-            "code-metric": ["0.875rem", { "lineHeight": "1.25rem", "fontWeight": "500" }],
-            "body-lg": ["1.125rem", { "lineHeight": "1.75rem", "letterSpacing": "-0.01em", "fontWeight": "400" }],
-            "headline-lg": ["2.5rem", { "lineHeight": "3rem", "letterSpacing": "-0.025em", "fontWeight": "700" }],
-            "label-sm": ["0.75rem", { "lineHeight": "1rem", "letterSpacing": "0.04em", "fontWeight": "600" }],
-            "body-sm": ["0.875rem", { "lineHeight": "1.375rem", "fontWeight": "400" }],
-            "body-md": ["1rem", { "lineHeight": "1.5rem", "letterSpacing": "-0.005em", "fontWeight": "400" }],
-            "display": ["3.75rem", { "lineHeight": "4.25rem", "letterSpacing": "-0.03em", "fontWeight": "800" }],
-            "display-mobile": ["2.25rem", { "lineHeight": "2.75rem", "letterSpacing": "-0.025em", "fontWeight": "800" }],
-            "headline-lg-mobile": ["1.875rem", { "lineHeight": "2.375rem", "letterSpacing": "-0.02em", "fontWeight": "700" }],
-            "headline-md": ["1.75rem", { "lineHeight": "2.25rem", "letterSpacing": "-0.02em", "fontWeight": "600" }]
-          }
-        }
-      }
-    };
-  </script>
+  <link rel="stylesheet" href="css/tailwind.min.css?v=23">
   <meta property="og:url" content="https://www.servispilot.com.tr/">
   <link rel="canonical" href="https://www.servispilot.com.tr/">
   <!-- Yapısal veri: Organization + SoftwareApplication + FAQPage -->
@@ -299,15 +174,15 @@
   <header class="fixed top-0 inset-x-0 z-50 bg-surface-base/90 backdrop-blur-xl border-b border-surface-container-high/40 shadow-2xl">
     <div class="ticker-wrap overflow-hidden bg-[#0E1B2C] py-1.5">
       <div class="ticker-track items-center gap-10 pr-10 text-[11px] text-white/80">
-        <span class="inline-flex items-center gap-2 whitespace-nowrap"><span class="inline-flex items-center px-2 py-0.5 rounded-full bg-green-600 text-white text-[9px] font-bold tracking-wide">ŞU ANDA CANLI</span><span>GİB e-Arşiv entegrasyonu yayında</span><span class="text-white/25">•</span></span><span class="inline-flex items-center gap-2 whitespace-nowrap"><span class="inline-flex items-center px-2 py-0.5 rounded-full bg-[#3D4A5A] text-white text-[9px] font-bold tracking-wide">YENİ</span><span>Ruhsat OCR — 4 saniyede iş emri</span><span class="text-white/25">•</span></span><span class="inline-flex items-center gap-2 whitespace-nowrap"><span class="inline-flex items-center px-2 py-0.5 rounded-full bg-[#3D4A5A] text-white text-[9px] font-bold tracking-wide">YENİ</span><span>QR ile parça takibi ve stok düşümü</span><span class="text-white/25">•</span></span><span class="inline-flex items-center gap-2 whitespace-nowrap"><span class="inline-flex items-center px-2 py-0.5 rounded-full bg-green-600 text-white text-[9px] font-bold tracking-wide">ŞU ANDA CANLI</span><span>WhatsApp onay portalı</span><span class="text-white/25">•</span></span><span class="inline-flex items-center gap-2 whitespace-nowrap"><span class="inline-flex items-center px-2 py-0.5 rounded-full bg-[#3D4A5A] text-white text-[9px] font-bold tracking-wide">YENİ</span><span>Araç Teslim Formu PDF çıktısı</span><span class="text-white/25">•</span></span><span class="inline-flex items-center gap-2 whitespace-nowrap"><span class="inline-flex items-center px-2 py-0.5 rounded-full bg-green-600 text-white text-[9px] font-bold tracking-wide">ŞU ANDA CANLI</span><span>500+ servisin gerçek akışından tasarlandı</span><span class="text-white/25">•</span></span><span class="inline-flex items-center gap-2 whitespace-nowrap"><span class="inline-flex items-center px-2 py-0.5 rounded-full bg-[#3D4A5A] text-white text-[9px] font-bold tracking-wide">YENİ</span><span>Cari hesap ve tahsilat takibi</span><span class="text-white/25">•</span></span>
-        <span aria-hidden="true"><span class="inline-flex items-center gap-2 whitespace-nowrap"><span class="inline-flex items-center px-2 py-0.5 rounded-full bg-green-600 text-white text-[9px] font-bold tracking-wide">ŞU ANDA CANLI</span><span>GİB e-Arşiv entegrasyonu yayında</span><span class="text-white/25">•</span></span><span class="inline-flex items-center gap-2 whitespace-nowrap"><span class="inline-flex items-center px-2 py-0.5 rounded-full bg-[#3D4A5A] text-white text-[9px] font-bold tracking-wide">YENİ</span><span>Ruhsat OCR — 4 saniyede iş emri</span><span class="text-white/25">•</span></span><span class="inline-flex items-center gap-2 whitespace-nowrap"><span class="inline-flex items-center px-2 py-0.5 rounded-full bg-[#3D4A5A] text-white text-[9px] font-bold tracking-wide">YENİ</span><span>QR ile parça takibi ve stok düşümü</span><span class="text-white/25">•</span></span><span class="inline-flex items-center gap-2 whitespace-nowrap"><span class="inline-flex items-center px-2 py-0.5 rounded-full bg-green-600 text-white text-[9px] font-bold tracking-wide">ŞU ANDA CANLI</span><span>WhatsApp onay portalı</span><span class="text-white/25">•</span></span><span class="inline-flex items-center gap-2 whitespace-nowrap"><span class="inline-flex items-center px-2 py-0.5 rounded-full bg-[#3D4A5A] text-white text-[9px] font-bold tracking-wide">YENİ</span><span>Araç Teslim Formu PDF çıktısı</span><span class="text-white/25">•</span></span><span class="inline-flex items-center gap-2 whitespace-nowrap"><span class="inline-flex items-center px-2 py-0.5 rounded-full bg-green-600 text-white text-[9px] font-bold tracking-wide">ŞU ANDA CANLI</span><span>500+ servisin gerçek akışından tasarlandı</span><span class="text-white/25">•</span></span><span class="inline-flex items-center gap-2 whitespace-nowrap"><span class="inline-flex items-center px-2 py-0.5 rounded-full bg-[#3D4A5A] text-white text-[9px] font-bold tracking-wide">YENİ</span><span>Cari hesap ve tahsilat takibi</span><span class="text-white/25">•</span></span></span>
+        <span class="inline-flex items-center gap-2 whitespace-nowrap"><span class="inline-flex items-center px-2 py-0.5 rounded-full bg-green-800 text-white text-[9px] font-bold tracking-wide">ŞU ANDA CANLI</span><span>GİB e-Arşiv entegrasyonu yayında</span><span class="text-white/25">•</span></span><span class="inline-flex items-center gap-2 whitespace-nowrap"><span class="inline-flex items-center px-2 py-0.5 rounded-full bg-[#3D4A5A] text-white text-[9px] font-bold tracking-wide">YENİ</span><span>Ruhsat OCR — 4 saniyede iş emri</span><span class="text-white/25">•</span></span><span class="inline-flex items-center gap-2 whitespace-nowrap"><span class="inline-flex items-center px-2 py-0.5 rounded-full bg-[#3D4A5A] text-white text-[9px] font-bold tracking-wide">YENİ</span><span>QR ile parça takibi ve stok düşümü</span><span class="text-white/25">•</span></span><span class="inline-flex items-center gap-2 whitespace-nowrap"><span class="inline-flex items-center px-2 py-0.5 rounded-full bg-green-800 text-white text-[9px] font-bold tracking-wide">ŞU ANDA CANLI</span><span>WhatsApp onay portalı</span><span class="text-white/25">•</span></span><span class="inline-flex items-center gap-2 whitespace-nowrap"><span class="inline-flex items-center px-2 py-0.5 rounded-full bg-[#3D4A5A] text-white text-[9px] font-bold tracking-wide">YENİ</span><span>Araç Teslim Formu PDF çıktısı</span><span class="text-white/25">•</span></span><span class="inline-flex items-center gap-2 whitespace-nowrap"><span class="inline-flex items-center px-2 py-0.5 rounded-full bg-green-800 text-white text-[9px] font-bold tracking-wide">ŞU ANDA CANLI</span><span>500+ servisin gerçek akışından tasarlandı</span><span class="text-white/25">•</span></span><span class="inline-flex items-center gap-2 whitespace-nowrap"><span class="inline-flex items-center px-2 py-0.5 rounded-full bg-[#3D4A5A] text-white text-[9px] font-bold tracking-wide">YENİ</span><span>Cari hesap ve tahsilat takibi</span><span class="text-white/25">•</span></span>
+        <span aria-hidden="true"><span class="inline-flex items-center gap-2 whitespace-nowrap"><span class="inline-flex items-center px-2 py-0.5 rounded-full bg-green-800 text-white text-[9px] font-bold tracking-wide">ŞU ANDA CANLI</span><span>GİB e-Arşiv entegrasyonu yayında</span><span class="text-white/25">•</span></span><span class="inline-flex items-center gap-2 whitespace-nowrap"><span class="inline-flex items-center px-2 py-0.5 rounded-full bg-[#3D4A5A] text-white text-[9px] font-bold tracking-wide">YENİ</span><span>Ruhsat OCR — 4 saniyede iş emri</span><span class="text-white/25">•</span></span><span class="inline-flex items-center gap-2 whitespace-nowrap"><span class="inline-flex items-center px-2 py-0.5 rounded-full bg-[#3D4A5A] text-white text-[9px] font-bold tracking-wide">YENİ</span><span>QR ile parça takibi ve stok düşümü</span><span class="text-white/25">•</span></span><span class="inline-flex items-center gap-2 whitespace-nowrap"><span class="inline-flex items-center px-2 py-0.5 rounded-full bg-green-800 text-white text-[9px] font-bold tracking-wide">ŞU ANDA CANLI</span><span>WhatsApp onay portalı</span><span class="text-white/25">•</span></span><span class="inline-flex items-center gap-2 whitespace-nowrap"><span class="inline-flex items-center px-2 py-0.5 rounded-full bg-[#3D4A5A] text-white text-[9px] font-bold tracking-wide">YENİ</span><span>Araç Teslim Formu PDF çıktısı</span><span class="text-white/25">•</span></span><span class="inline-flex items-center gap-2 whitespace-nowrap"><span class="inline-flex items-center px-2 py-0.5 rounded-full bg-green-800 text-white text-[9px] font-bold tracking-wide">ŞU ANDA CANLI</span><span>500+ servisin gerçek akışından tasarlandı</span><span class="text-white/25">•</span></span><span class="inline-flex items-center gap-2 whitespace-nowrap"><span class="inline-flex items-center px-2 py-0.5 rounded-full bg-[#3D4A5A] text-white text-[9px] font-bold tracking-wide">YENİ</span><span>Cari hesap ve tahsilat takibi</span><span class="text-white/25">•</span></span></span>
       </div>
     </div>
     <div class="h-20 max-w-[1200px] mx-auto px-6 lg:px-12 flex items-center justify-between gap-6">
       <div class="flex items-center gap-3 shrink-0">
         <img alt="ServisPilot Logo" class="h-9 w-9 object-contain" src="assets/logo.png">
         <a class="flex items-baseline gap-1 group" data-path="anasayfa" href="#">
-          <span class="font-headline-sm text-headline-sm tracking-tight text-on-surface font-bold group-hover:text-primary transition-colors">Servis<span class="text-primary-container">Pilot</span></span>
+          <span class="font-headline-sm text-headline-sm tracking-tight text-on-surface font-bold group-hover:text-primary transition-colors">Servis<span class="text-accent-deep">Pilot</span></span>
           <span class="hidden sm:inline font-code-metric text-[10px] text-text-muted">.com.tr</span>
         </a>
         
@@ -1293,7 +1168,7 @@
   <script src="js/config.js?v=22"></script>
   <script src="js/analytics.js?v=22"></script>
   <script src="js/main.js?v=22" defer></script>
-  <script src="js/demo-engine.js?v=22" defer></script>
+  <script src="js/demo-engine.js?v=23" defer></script>
   <script src="js/motion.js?v=22" defer></script>
   <script src="js/chatbot.js" defer></script>
 </body>
