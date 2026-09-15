@@ -45,13 +45,12 @@ Kural: **içerik, reklam veya satış işi yapılmadan önce ilgili raporun gün
 
 ## Bekleyen işler (güncel tut)
 
-- [ ] Domain sahipliği teyidi
-- [ ] GA4 + Clarity ID'leri (`js/analytics.js`), takvim linki (`js/config.js`)
-- [ ] Gençler Oto kapanışı (bkz. SATIS-PLANI.md bölüm 1)
-- [ ] Tailwind CDN → derlenmiş CSS + meta description kısaltma (bkz. teknik-seo-denetim)
-- [ ] 3 zamanlanmış otomasyon teklifi (SATIS-PLANI.md bölüm 7 — onay bekliyor)
-- [ ] DataForSEO hesap doğrulaması (app.dataforseo.com → sonra `keyword_research.py volume "oto servis programı"` ile tekrar test)
-- [ ] İlk pillar yazı: "Oto Servis Muhasebe Programı: Eksiksiz Rehber (2026)"
+- [ ] Oğuzhan pull → canlı doğrulama + PSI → GSC → Bing/Yandex → blog publish zinciri (2 taslak blog-taslaklari/ altında hazır)
+- [ ] Gençler Oto kapanışı (SATIS-PLANI.md bölüm 1)
+- [ ] GA4 + Clarity ID'leri, takvim linki
+- [ ] Apify token rotasyonu (public history'de kaldı)
+- [ ] BUG-3 yasal sayfa verileri (yazılım oturumu bekliyor)
+- [ ] Ofis sabah listesi: chelper auth → zamanlayıcı ENABLE → hibernate off (admin) → BIOS power-on → UPS alımı
 
 ## Çoklu oturum koordinasyonu
 
