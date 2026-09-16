@@ -45,7 +45,8 @@ Kural: **içerik, reklam veya satış işi yapılmadan önce ilgili raporun gün
 
 ## Bekleyen işler (güncel tut)
 
-- [ ] Oğuzhan pull → canlı doğrulama + PSI → GSC → Bing/Yandex → blog publish zinciri (2 taslak blog-taslaklari/ altında hazır)
+- [ ] Oğuzhan pull → canlı doğrulama + PSI → GSC → Bing/Yandex → blog publish zinciri (5 taslak blog-taslaklari/ altında hazır: excel rehberi, 7 kriter, karşılaştırma 2026, vs-excel, qr bakım geçmişi)
+- [ ] Ofis Issue #5 (rakip içerik analizi) gece işlendi mi kontrol → çıktı raporunu incele
 - [ ] Gençler Oto kapanışı (SATIS-PLANI.md bölüm 1)
 - [ ] GA4 + Clarity ID'leri, takvim linki
 - [ ] Apify token rotasyonu (public history'de kaldı)
