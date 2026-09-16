@@ -39,7 +39,7 @@ Müşteri kapıdan girip soruyor: "Usta, bu araca en son ne yapmıştık?" Servi
 
 ## QR bakım geçmişi nedir?
 
-Kısaca: aracın dijital yağ kartı. Araca (daha doğrusu plakasına) ait her işlem — yağ değişimi, fren balatası, Klima servisi, değişen her parça — tarih ve kilometreyle kaydedilir. Kaydın yanına bir karekod bağlanır; telefonun kamerasıyla okutulduğunda o aracın tüm geçmişi ekranda karşına çıkar.
+Kısaca: aracın dijital yağ kartı. Araca (daha doğrusu plakasına) ait her işlem — yağ değişimi, fren balatası, klima servisi, değişen her parça — tarih ve kilometreyle kaydedilir. Kaydın yanına bir karekod bağlanır; telefonun kamerasıyla okutulduğunda o aracın tüm geçmişi ekranda karşına çıkar.
 
 Buradaki kritik kelime "araca bağlı olması". Kağıt yağ kartı klasörde kaybolabilir, ama asıl sorun kaybolmak değil: kart kaç sayfadaysa arama o kadar uzar. QR geçmişinde arama yok — okutma var. Kabullenme masasının üstünde telefonla plakayı yazıyorsun, geçmişi görüyorsun, müşteriye aynı ekrandan gösteriyorsun.
 
@@ -72,7 +72,7 @@ Kurulum bir iş günü alır. Sıra önemli:
 
 **5. Ekibi tek oturumda alıştır.** Teknisyene ve kabullük elemanına 15 dakika yeter: kabul aç, parça işle, teslim et. Zor olan araç değil, alışkanlıktır; ilk hafta her akşam 5 dakika kontrol edersen alışkanlık oturur.
 
-ServisPilot'ta bu 5 adım kurulum paketinin içinde: aracın dijital geçmişine [QR tarayıcıdan](/) okutarak ulaşıyorsun, iş emri kapanınca kayıt otomatik düşüyor. Kurulumu da biz yapıyoruz — listeyi WhatsApp'tan göndermen yeterli.
+ServisPilot'ta bu 5 adım kurulum paketinin içinde: [ServisPilot](/) QR okutarak aracın dijital geçmişine ulaştırır, iş emri kapanınca kayıt otomatik düşer. Kurulumu da biz yapıyoruz — listeyi WhatsApp'tan göndermen yeterli.
 
 ## Kurulumda yapılan 4 hata
 
@@ -87,6 +87,8 @@ ServisPilot'ta bu 5 adım kurulum paketinin içinde: aracın dijital geçmişine
 ## Müşteri tarafı: geçmişi göstermek satış yapar
 
 QR bakım geçmişi sadece hatırlama aracı değil, satış kanalıdır. Müşteriye "aracınızın fren balatası geçen kasımda değişti, önümüzdeki bakımda kontrol edelim" diyebilmek, "balata biraz uzun" demekten farklı bir güven kurar. İşlem özetinin WhatsApp'tan gitmesi ise iki iş yapar: müşteri elinde yazılı kanıt olur, servisin adı telefonunda kalır.
+
+Somut örnek: Kasımda yağ-filtre değişen bir müşteriye şubat başında "Aracınızın bakımı yaklaşıyor, uygun günü söyleyin" mesajı gittiğini düşün. Aynı müşteri, sen aramadığın için dört ay sonra en yakın zincir servise gidebilirdi. Defter tutan servis bu müşteriyi kaybeder — çünkü hatırlatma, kalabalık günün sonunda elle yapılabilecek bir iş değildir. Kayıttan doğan hatırlatma ise maliyeti sıfır, getirisi geri gelen müşteri olan bir akıştır.
 
 Bir sonraki adım, bu geçmişi **hatırlatmaya** bağlamaktır: "Aracınızın bakım zamanı yaklaştı" mesajı, servis tarihinde gelen müşteri demektir. Ama önce temel kurulsun: plaka yazıldığında geçmişi gören bir sistem.
 
@@ -106,6 +108,12 @@ Aynı sistemde olması tavsiye edilir: iş emrine girilen parça stoktan düşer
 
 **Kaç araçtan sonra Excel'den QR sisteme geçmek mantıklı?**
 Kural, araç sayısı değil soru sıklığıdır: "bu araca ne yapmıştık" sorusu haftada birkaç kez cevapsız kalıyorsa geçiş zamanı gelmiştir. Ayda 40+ araç işleyen serviste bu soru her gün çıkar.
+
+**Kağıt yağ kartını tamamen bırakmalı mıyım?**
+Geçiş döneminde ikisi yan yana yaşayabilir; ama kural koy: sistemdeki kayıt asıl kayıttır, kart yedektir. İki kayıt tutmaya devam eden servis, iki iş yapıp birine güvenen servis olur. Üç ay içinde kartı rafa kaldırmayı hedefle.
+
+**QR kartları basmak için yazıcı şart mı?**
+Şart değil. Karekodları sistemden yazdırıp klasöre koymak en pratik yolu; ama yazıcın yoksa karekod ekrandan da okunur — kabullükteki telefon kaydı açar, plakayla arama yapılmış olur. Kart, hız için kısayoldur; sistemin kendisi değil.
 
 ---
 

@@ -36,7 +36,7 @@ Google'a **"servis takip programı excel"** yazan ustanın kafasında tek soru v
 
 1. [Excel'in görünmeyen faturası: 4 maliyet kalemi](#excelin-gorunmeyen-faturası-4-maliyet-kalemi)
 2. [Excel ne zaman hâlâ yeterli?](#excel-ne-zaman-hala-yeterli)
-3. [Yan yana: Excel vs bulut servis programı](#yan-yana-excel-vs-bulut-servis-programı)
+3. [Servis takip programı mı, excel mi: yan yana](#servis-takip-programı-mı-excel-mi-yan-yana)
 4. [Fatura tarafı: "bedava"nın gizli 400-700 lirası](#fatura-tarafi-bedavanın-gizli-400-700-lirası)
 5. [Geçiş kararı: kendine sorulacak 3 soru](#gecis-kararı-kendine-sorulacak-3-soru)
 6. [Sık Sorulan Sorular](#sık-sorulan-sorular)
@@ -63,7 +63,7 @@ Dürüst olalım, çünkü güven satan bir ürünü ancak dürüst anlatım ta�
 
 Excel bu hâlden "daha fazlasına" geçtiğin anda zorlanmaya başlar: ikinci teknisyen, araç sayısının artması, müşterinin "geçen sefer ne yapmıştık" sorusu ve e-Fatura zorunluluğu. Zorlama başladığında geçiş yapmak, zorlamayla yaşamaya devam etmekten ucuzdur.
 
-## Yan yana: Excel vs bulut servis programı
+## Servis takip programı mı, excel mi: yan yana
 
 Aynı işi iki yöntemle yapan bir servisin günlüğü şöyle karşılaştırılır:
 
@@ -103,6 +103,8 @@ Kararı duyguya değil üç soruya bağla:
 
 Üçünden biri seni rahatsız ediyorsa geçiş zamanı gelmiştir. Geçişin kendisi düşündüğünden kolay: araç ve müşteri listesini WhatsApp'tan gönderiyorsun, kurulumu biz yapıyorsunuz. Adım adım anlatım için [Excel'den programa geçiş rehberimize](/blog/excel-servis-takibi-rehberi/) bak.
 
+**İlk 30 gün nasıl geçer?** İlk hafta sadece aktif işleri programa alırsın; eski kayıtlar Excel'de yedeğiyle durur. İkinci hafta müşteri onayları WhatsApp'tan akmaya başlar — bu, sistemin "tuttuğunu" ilk hissettiğin an olur. Ay sonunda ilk cari-kasa dökümünü muhasebecinle açarsın: ya üç ayrı dosyadan derlediğin özet olur ya da hazır çıktı. Çoğu usta kararı bu noktada kesinleştirir; çünkü farkı kağıt üstünde görmüş olur.
+
 ## Sık Sorulan Sorular
 
 **Excel'den programa geçmek veri kaybı yaşatır mı?**
@@ -119,6 +121,12 @@ Taşınır. Önemli araçların geçmişini öncelikli aktarırız; gerisi zaman
 
 **14 günlük denemede gerçekten kredi kartı istenmiyor mu?**
 İstenmiyor. Deneme süresi dolduğunda otomatik ücret çekilmez; devam kararı tamamen sizindir. İlk 50 özel servise sabit fiyat kampanyası da geçerliliğini koruyor.
+
+**Programa geçince teknisyenlere ayrıca eğitim gerekir mi?**
+Tek oturum yeter: kabul açmak, parça işlemek ve teslim etmek Excel'den daha az adımlı işlemlerdir. Kurulumu biz yaptığı için ekibiniz ilk gün hazır listelerle başlar; boş sisteme "öğrenerek girme" derdi olmaz.
+
+**Excel'i tamamen bırakmam şart mı?**
+Şart değil. Birçok servis kabul-takip tarafını programda tutarken Excel'i rapor ve özel hesaplamalar için kullanmaya devam eder. Bırakılması gereken şey, işin kaydının tek bir dosyaya ve tek bir kişiye bağımlı olmasıdır.
 
 ---
 
