@@ -54,6 +54,17 @@ Kural: **içerik, reklam veya satış işi yapılmadan önce ilgili raporun gün
 - [ ] Ofis v2 geçişi (PR #16 merge edildi): sabah PAUSE + OfisAjan'ı supervisor.py --ensure'e çevir (PR body'deki Geçiş bölümü) + stub prova + allowlist doldurma
 - [ ] Ofis sabah listesi: chelper auth ✓ yapıldı → zamanlayıcı ENABLE ✓ → hibernate off (admin) → BIOS power-on → UPS alımı
 
+## Vault — makine geneli hafıza (18 Eyl 2026 kuruldu)
+
+**`D:\vault`** — Obsidian LLM-wiki (Karpathy deseni): iki reponun (website + ofis) paylaşımlı kalıcı bilgi grafiği. Anayasa: `D:\vault\CLAUDE.md` (ham kaynaklar DEĞİŞMEZ — iki repo, research/, ekip/; wiki'ye sadece ajanlar yazar).
+
+- **Skill:** `llm-wiki` (INGEST·QUERY·LINT) global kurulu — Claude Code (`~/.claude/skills/`) + ZCode (`~/.zcode/skills/`). Ajanlar: archivist + scribe (`~/.claude/agents/`).
+- **LINT:** `python C:\Users\Mustafa\claude-obsidian-kit\scripts\vault-lint.py D:\vault` (şu an 100/100)
+- **Radar paneli:** `C:\Users\Mustafa\vault-radar-panel.bat` → localhost:7777 (ajanın hangi notları gerçekten okuduğunu canlı gösterir; hook `~/.claude/settings.json`'da)
+- **Obsidian:** kurulu (1.13.7) → "Open folder as vault" → `D:\vault`
+- Klonlar: `C:\Users\Mustafa\claude-obsidian-kit\`, `C:\Users\Mustafa\vault-radar\`. Vault kendi git repo'su (local commit; private remote eklenebilir).
+- **Yapılacak:** ekip raporlarının (D:\servispilot-ofis\ekip\raporlar\) gece ajanına INGEST görevi verilecek; RETROFIT.md rehberi kit'te var.
+
 ## Çoklu oturum koordinasyonu
 
 - **DEPLOY MODELİ (15 Eyl kararı):** Domain nginx'te kalıyor. Akış: **git push → Oğuzhan abi'nin otomatik pull script'i → nginx deploy.** Vercel yalnızca yedek aynadır (servispilot-web.vercel.app günceldir). Oğuzhan'ın nginx ayarlarında olması gerekenler: (1) non-www→www 301 (vercel.json nginx'te çalışmaz), (2) `/research/`, `/tools/`, `/raporlar/`, `/Ekran ssleri/`, `*.md`, `.git`, `.zcode` path'lerine DENY — **research/*.py içinde Apify token var, açık sunulursa sızıntı**, (3) `api/chat.js` serverless'tır, nginx'te çalışması için Node/proxy gerekir — chatbot domain'de çalışmayabilir.
