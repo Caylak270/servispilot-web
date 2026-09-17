@@ -46,12 +46,12 @@ Kural: **içerik, reklam veya satış işi yapılmadan önce ilgili raporun gün
 ## Bekleyen işler (güncel tut)
 
 - [ ] Oğuzhan pull → canlı doğrulama + PSI → GSC → Bing/Yandex → blog publish zinciri (5 taslak blog-taslaklari/ altında hazır: excel rehberi, 7 kriter, karşılaştırma 2026, vs-excel, qr bakım geçmişi)
-- [ ] Ofis Issue #5 (rakip içerik analizi) gece işlendi mi kontrol → çıktı raporunu incele
+- [x] Ofis Issue #5 (rakip içerik analizi) gece işlendi → çıktı incelendi (5 içerik fırsatı + kanca eşleşme; rapor: ofis repo `ekip/raporlar/2026-09-17-rakip-icerik-analizi.md`)
 - [ ] Gençler Oto kapanışı (SATIS-PLANI.md bölüm 1)
 - [ ] GA4 + Clarity ID'leri, takvim linki
 - [ ] Apify token rotasyonu (public history'de kaldı)
 - [ ] BUG-3 yasal sayfa verileri (yazılım oturumu bekliyor)
-- [ ] Ofis v2 geçişi (PR #16 merge edildi): sabah PAUSE + OfisAjan'ı supervisor.py --ensure'e çevir (PR body'deki Geçiş bölümü) + stub prova + allowlist doldurma
+- [x] Ofis v2 geçişi — UYGULANDI (18 Eyl ~02:00, Mert): OfisAjan → pythonw + `supervisor.py --ensure` (5 dk gözcü, penceresiz); v1 ofis.py PAUSE ile durduruldu; prova issue #18 uçtan uca PASS. Kalan kullanıcı adımları: ONLOGON görevi (yönetici konsolu) + repo-allowlist.txt doldurma
 - [ ] Ofis sabah listesi: chelper auth ✓ yapıldı → zamanlayıcı ENABLE ✓ → hibernate off (admin) → BIOS power-on → UPS alımı
 
 ## Vault — makine geneli hafıza (18 Eyl 2026 kuruldu)
@@ -63,7 +63,8 @@ Kural: **içerik, reklam veya satış işi yapılmadan önce ilgili raporun gün
 - **Radar paneli:** `C:\Users\Mustafa\vault-radar-panel.bat` → localhost:7777 (ajanın hangi notları gerçekten okuduğunu canlı gösterir; hook `~/.claude/settings.json`'da)
 - **Obsidian:** kurulu (1.13.7) → "Open folder as vault" → `D:\vault`
 - Klonlar: `C:\Users\Mustafa\claude-obsidian-kit\`, `C:\Users\Mustafa\vault-radar\`. Vault kendi git repo'su (local commit; private remote eklenebilir).
-- **Yapılacak:** ekip raporlarının (D:\servispilot-ofis\ekip\raporlar\) gece ajanına INGEST görevi verilecek; RETROFIT.md rehberi kit'te var.
+- **DURAN KURAL (18 Eyl, kullanıcı kararı): HER ŞEY İKİNCİ BEYİNE İŞLENİR.** Ajan önemli bir çıktı/karar ürettiğinde özünü `D:\vault`'a INGEST eder (protokol: `D:\vault\CLAUDE.md`); sorgular önce `index.md`'den başlar (maks 2-5 not, kaynak linkli); gün sonunda ekip raporu + vault ingest birlikte yapılır. Ekip raporlarının gece ajanına INGEST'i bu kural kapsamında (RETROFIT.md rehberi kit'te).
+- **Vault ajanı oturumu:** `sess_8c5ff4ac-503f-46ff-8a39-41fe00f8b0fb` (kayıt: vault `sessions/2026-09-18-vault-ajani-kayit`). İnteraktif ekip chat ID'leri: ofis repo `ekip/TAKIM.md` tablosu; GLM worker'lar: `ekip/` kartları.
 
 ## Çoklu oturum koordinasyonu
 
