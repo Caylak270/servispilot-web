@@ -51,7 +51,8 @@ Kural: **içerik, reklam veya satış işi yapılmadan önce ilgili raporun gün
 - [ ] GA4 + Clarity ID'leri, takvim linki
 - [ ] Apify token rotasyonu (public history'de kaldı)
 - [ ] BUG-3 yasal sayfa verileri (yazılım oturumu bekliyor)
-- [ ] Ofis sabah listesi: chelper auth → zamanlayıcı ENABLE → hibernate off (admin) → BIOS power-on → UPS alımı
+- [ ] Ofis v2 geçişi (PR #16 merge edildi): sabah PAUSE + OfisAjan'ı supervisor.py --ensure'e çevir (PR body'deki Geçiş bölümü) + stub prova + allowlist doldurma
+- [ ] Ofis sabah listesi: chelper auth ✓ yapıldı → zamanlayıcı ENABLE ✓ → hibernate off (admin) → BIOS power-on → UPS alımı
 
 ## Çoklu oturum koordinasyonu
 
