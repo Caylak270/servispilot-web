@@ -9,7 +9,7 @@ Bu dosya her oturumda otomatik yüklenir. Amaç: context sıfırlandığında/ko
 - Site: statik HTML + Tailwind, Vercel'de. Domain: `servispilot.com.tr` (**sahiplik teyit edilmemiş — ön koşul**)
 - Satış kanalı: WhatsApp (`905309929505`), kredi kartısız 14 gün deneme, kurulum bizden
 - Fiyat: Aylık 2.399₺ / 6 Ay 1.899₺/ay / Yıllık 1.599₺/ay (19.188₺) — "İlk 50 özel servise sabit fiyat" kampanyası
-- Durum (13 Eyl 2026): **0 ödeme yapan müşteri, 1 deneme (Gençler Oto)**, site geliştirme aşamasında
+- Durum (18 Eyl 2026): **0 ödeme yapan müşteri, 1 deneme (Gençler Oto — video onayı bekleniyor, Oğuzhan arayacak)**, site canlı (panel 8766), 5 blog taslağı + 3 SEO raporu üretildi, ofis v2 Faz A main'de
 
 ## Rapor haritası — ne zaman hangisini oku
 
