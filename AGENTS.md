@@ -41,13 +41,14 @@ Kural: **içerik, reklam veya satış işi yapılmadan önce ilgili raporun gün
 5. Apify token (aktif): `APIFY_TOKEN_BURAYA(research/.apify_token dosyasindan oku)` · SerpApi: kullanıcıda mevcut
 6. Bu proje asla GENERIC template içerik üretmez: her içerik kanca mesajlardan birini kullanır (PAZARLAMA-PLANI.md 2.3)
 7. **DataForSEO** kurulu: 15 `/seo-*` skill'i (`~/.zcode/skills/seo-*`), paylaşılan istemci `~/.claude/skills/seo/` (scripts + `.env`). Kimlik bilgileri `.env`'de; varsayılan: konum=Turkey, dil=tr. Kullanım: `/seo keywords <kelime>`, `/seo quick <domain>`, `/seo audit <domain>`, `/seo competitors <domain>`. Kullandı-öde modeli — büyük sorgulardan önce kullanıcıya maliyet hatırlat. Hesap doğrulaması gerekli (40104) — kullanıcı app.dataforseo.com'da doğrulayınca çalışır.
-8. **Semrush/Ahrefs aboneliği ALINMAZ** (şu aşamada). Kelime hacmi için ücretsiz zincir: **Google Keyword Planner** (Ads hesabıyla — hafta 0'da zaten açılacak) + Google Trends (göreli karşılaştırma) + GSC (site canlıyken gerçek veri) + autocomplete/related searches (tamamlandı: `research/keyword_autocomplete.json`, 120 kelime). DataForSEO kurulu kaldı = kullandı-öde yedek (sorgu başı kuruşlar; doğrulama sorunu çözülürse kullanılabilir, zorunlu değil).
+8. **Semrush/Ahrefs aboneliği ALINMAZ** (şu aşamada). **DataForSEO da DÜŞTÜ (18 Eyl kullanıcı kararı — ücretliymiş).** Kelime hacmi ücretsiz zincir: **Google Keyword Planner** (Ads hesabıyla — hafta 0'da zaten açılacak; reklamsızda bant aralığı verir, yeterli) + **SearchVolume.io** (kayıtsız toplu hacim sorgusu) + **Bing Webmaster keyword research** (site doğrulanınca GSC import ile bedava gelir) + Google Trends (göreli) + GSC (site canlıyken GERÇEK veri — birincil kaynak olacak) + autocomplete havuzu (tamamlandı: `research/keyword_autocomplete.json`, 120 kelime). Hacim verisi İÇERİK BLOKLARI DEĞİL — autocomplete + rakip içerik boşluğuyla üretim zaten dönüyor, hacimler GSC canlıya gelince gerçek veriyle doğrulanır.
 
 ## Bekleyen işler (güncel tut)
 
 - [ ] Oğuzhan pull → canlı doğrulama + PSI → GSC → Bing/Yandex → blog publish zinciri (5 taslak blog-taslaklari/ altında hazır: excel rehberi, 7 kriter, karşılaştırma 2026, vs-excel, qr bakım geçmişi)
 - [x] Ofis Issue #5 (rakip içerik analizi) gece işlendi → çıktı incelendi (5 içerik fırsatı + kanca eşleşme; rapor: ofis repo `ekip/raporlar/2026-09-17-rakip-icerik-analizi.md`)
-- [ ] Gençler Oto kapanışı (SATIS-PLANI.md bölüm 1)
+- [ ] Blog publish zinciri — YENİ KAPI (18 Eyl kullanıcı kararı): yayın öncesi taslaklar DİĞER AJANLARA test ettirilecek (Deniz type:test + çapraz inceleme) → sonra kullanıcı onayı → HTML + deploy
+- [ ] Gençler Oto: Hulusi Bey 10 Eyl'de 15 günlük izne çıktı (~25 Eyl dönüş) — dönüşte kontrol + deneme süreci başlatma (SATIS-PLANI.md bölüm 1)
 - [ ] GA4 + Clarity ID'leri, takvim linki
 - [ ] Apify token rotasyonu (public history'de kaldı)
 - [ ] BUG-3 yasal sayfa verileri (yazılım oturumu bekliyor)
