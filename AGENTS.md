@@ -52,7 +52,7 @@ Kural: **içerik, reklam veya satış işi yapılmadan önce ilgili raporun gün
 - [ ] GA4 + Clarity ID'leri, takvim linki
 - [ ] Apify token rotasyonu (public history'de kaldı)
 - [ ] BUG-3 yasal sayfa verileri (yazılım oturumu bekliyor)
-- [x] Ofis v2 geçişi — UYGULANDI (18 Eyl ~02:00, Mert): OfisAjan → pythonw + `supervisor.py --ensure` (5 dk gözcü, penceresiz); v1 ofis.py PAUSE ile durduruldu; prova issue #18 uçtan uca PASS. Kalan kullanıcı adımları: ONLOGON görevi (yönetici konsolu) + repo-allowlist.txt doldurma
+- [x] Ofis v2 geçişi — TAMAMLANDI (18 Eyl): supervisor geçişi (Mert) + ONLOGON görevi (kullanıcı kurdu, orchestrator doğruladı: OfisAjanBaslangic Ready, pythonw+ensure) + repo-allowlist (rio onaylı). 7/24 için kalan: UPS alımı + BIOS power-on + (opsiyonel) otomatik oturum
 - [ ] Ofis sabah listesi: chelper auth ✓ yapıldı → zamanlayıcı ENABLE ✓ → hibernate off (admin) → BIOS power-on → UPS alımı
 
 ## Vault — makine geneli hafıza (18 Eyl 2026 kuruldu)
